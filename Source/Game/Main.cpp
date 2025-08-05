@@ -19,6 +19,7 @@
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
 #include "Core/File.h"
+#include "Renderer/Texture.h"
 
 
 #include "Engine.h"
@@ -35,6 +36,8 @@ int main(int argc, char* argv[]) {
     parabellum::File::SetCurrentDirectory("Assets");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
+
+   
 
 
     //inits.
@@ -86,6 +89,11 @@ int main(int argc, char* argv[]) {
 
 
     getEngine().getAudioSys().playSound("bass");
+    // create texture, using shared_ptr so texture can be shared
+    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
+
+    texture->Load("the_legend.jpg", getEngine().getRenderer());
+    //will not draw. look into this in texture.cpp
 
     //MAIN LOOP
     while (!quit) {
@@ -128,6 +136,8 @@ int main(int argc, char* argv[]) {
        
         spacegame->Update();
         spacegame->Draw(getEngine().getRenderer());
+
+        getEngine().getRenderer().DrawTexture(texture.get(), 30, 30, 0);
 
         getEngine().getRenderer().present(); // Render the screen
     }

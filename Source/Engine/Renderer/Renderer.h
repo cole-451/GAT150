@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_image/SDL_image.h>
 
 namespace parabellum {
 	class Renderer
@@ -32,6 +33,9 @@ namespace parabellum {
 		int getWidth() const { return w_width; }
 
 		int getHeight() const { return w_height; }
+
+		friend class Texture;
+		void DrawTexture(Texture* texture, float x, float y, float angle);
 
 
 

@@ -1,7 +1,9 @@
 #include "Renderer.h"
+#include "Texture.h"
 #include <SDL3/SDL.h>
 #include <iostream>
 #include <string>
+#include "../Math/Vector2.h"
 
 namespace parabellum {
 
@@ -81,5 +83,19 @@ namespace parabellum {
     void Renderer::drawdot(float x, float y)
     {
         SDL_RenderPoint(renderer, x, y);
+    }
+
+    void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
+    {
+        vec2 size = texture->GetSize();
+
+        SDL_FRect destRect;
+        destRect.x = x;
+        destRect.y = y;
+        destRect.w = size.x;
+        destRect.h = size.y;
+
+        // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
+        SDL_RenderTexture(renderer, texture->m_texture, NULL, &destRect);
     }
 }
