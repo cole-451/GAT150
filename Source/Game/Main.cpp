@@ -20,6 +20,8 @@
 #include "Renderer/Text.h"
 #include "Core/File.h"
 #include "Renderer/Texture.h"
+#include "Resources/Resource.h"
+#include "Resources/ResourceManager.h"
 
 
 #include "Engine.h"
@@ -61,6 +63,7 @@ int main(int argc, char* argv[]) {
      spacegame->initialize(); 
 
 
+
     void* extradriverdata = nullptr;
 
     std::vector<vec2> stars;
@@ -89,11 +92,11 @@ int main(int argc, char* argv[]) {
 
 
     getEngine().getAudioSys().playSound("bass");
+    auto texture = parabellum::Resources().Get<parabellum::Texture>("the_legend.jpg", getEngine().getRenderer());
     // create texture, using shared_ptr so texture can be shared
     std::shared_ptr<Texture> texture = std::make_shared<Texture>();
 
     texture->Load("the_legend.jpg", getEngine().getRenderer());
-    //will not draw. look into this in texture.cpp
 
     //MAIN LOOP
     while (!quit) {

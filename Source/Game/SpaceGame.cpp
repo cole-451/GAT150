@@ -12,16 +12,18 @@
 #include "Renderer/Font.h"
 #include "GameData.h"
 #include "Framework/Game.h"
+#include "Resources/ResourceManager.h"
 
 using namespace parabellum;
 bool SpaceGame::initialize() 
 {
-    m_titleFont = std::make_shared<Font>();
+    //m_titleFont = std::make_shared<Font>();
+
      m_scoreFont = std::make_shared<Font>();
-    m_titleFont->Load("Brianne_s_hand.ttf", 30);
+   // m_titleFont->Load("Brianne_s_hand.ttf", 30);
      m_scoreFont->Load("Brianne_s_hand.ttf", 50);
 
-    titleText = std::make_unique<Text>(m_titleFont);
+    titleText = std::make_unique<Text>(parabellum::Resources().Get<parabellum::Font>("Brianne_s_hand.ttf", 30));
     titleText->Create(getEngine().getRenderer(), "press k to start", vec3{ 1,1,1 });
     scoreText = std::make_unique<Text>(m_scoreFont);
     scoreText->Create(getEngine().getRenderer(), "" + std::to_string(m_score), vec3{0,1,0});

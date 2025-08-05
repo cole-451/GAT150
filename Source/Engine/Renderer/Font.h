@@ -1,12 +1,14 @@
 #pragma once
 
+#include "Resources/Resource.h"
 #include <string>
+
 
 
 	struct TTF_Font;
 namespace parabellum {
 
-	class Font {
+	class Font : public Resource {
 	public:
 		Font() = default;
 		~Font();
