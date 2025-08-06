@@ -92,11 +92,11 @@ int main(int argc, char* argv[]) {
 
 
     getEngine().getAudioSys().playSound("bass");
+    //std::shared_ptr<Texture> texture = std::make_shared<Texture>();
     auto texture = parabellum::Resources().Get<parabellum::Texture>("the_legend.jpg", getEngine().getRenderer());
     // create texture, using shared_ptr so texture can be shared
-    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
 
-    texture->Load("the_legend.jpg", getEngine().getRenderer());
+    //texture->Load("the_legend.jpg", getEngine().getRenderer());
 
     //MAIN LOOP
     while (!quit) {
@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
         spacegame->Update();
         spacegame->Draw(getEngine().getRenderer());
 
-        getEngine().getRenderer().DrawTexture(texture.get(), 30, 30, 0);
+       // getEngine().getRenderer().DrawTexture(texture.get(), 30, 30, 0);
 
         getEngine().getRenderer().present(); // Render the screen
     }

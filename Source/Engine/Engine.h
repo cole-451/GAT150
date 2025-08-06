@@ -4,14 +4,15 @@
 #include "Audio/AudioSys.h"
 #include "Input/InputSystem.h"
 #include "Renderer/ParticleSystem.h"
+#include "Core/Singleton.h"
+#include "Resources/ResourceManager.h"
 
 #include <memory>
 
 namespace parabellum {
-	class Engine {
+	class Engine: public Singleton<Engine> {
 	public:
-		Engine() = default;
-
+		
 		bool initialize();
 		void update();
 		void GTFO();
@@ -39,6 +40,10 @@ namespace parabellum {
 		}
 
 	private:
+		friend class Singleton<Engine>;
+		Engine() = default;
+
+	private:
 		Time m_time;
 		std::unique_ptr<Renderer> m_renderer;
 
@@ -51,6 +56,7 @@ namespace parabellum {
 
 		
 	};
-		Engine& getEngine();
+	// ground zero of the 238 errors
+	inline Engine& getEngine() { return Engine::Instance(); }
 
 }

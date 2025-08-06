@@ -7,11 +7,11 @@
 //#include "Scene.h"
 #include "../Framework/Scene.h"
 #include "../Framework/Game.h"
-
+#include "Renderer/Texture.h"
 
 namespace parabellum {
 
-	class Scene; // this fixes the 6 errors i get but fucks something else up
+	class Scene; 
 	
 	class Actor {
 	public:
@@ -29,7 +29,7 @@ namespace parabellum {
 		float lifespan = 0;
 
 		Actor() = default;
-		Actor(const Transform& transform, class std::shared_ptr<Model> model) :
+		Actor(const Transform& transform, class std::shared_ptr<Model> model) : //todo: replace the model system with a sprite system
 			m_transform{ transform },
 			m_model{ model }
 			//m_scene{scene}

@@ -6,6 +6,7 @@
 #include "Input/InputSystem.h"
 
 #include <memory>
+
 namespace parabellum {
 bool Engine::initialize() {
 	m_renderer = std::make_unique<Renderer>();
@@ -47,10 +48,5 @@ void Engine::update() {
 
 
 
-Engine& getEngine()
-{
-	static Engine engine;
-	return engine;
-}
 
 }

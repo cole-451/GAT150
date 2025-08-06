@@ -85,17 +85,30 @@ namespace parabellum {
         SDL_RenderPoint(renderer, x, y);
     }
 
-    void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
+    void Renderer::DrawTexture(Texture* texture, float x, float y)
     {
         vec2 size = texture->GetSize();
 
         SDL_FRect destRect;
         destRect.x = x;
-        destRect.y = y;
+        destRect.y = y; //* scale?
         destRect.w = size.x;
         destRect.h = size.y;
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
         SDL_RenderTexture(renderer, texture->m_texture, NULL, &destRect);
+    }
+    void Renderer::DrawTexture(Texture* texture, float x, float y, float angle, float scale)
+    {
+        vec2 size = texture->GetSize();
+
+        SDL_FRect destRect;
+        destRect.w = size.x * scale;
+        destRect.h = size.y * scale;
+        destRect.x = x - (destRect.w * 0.5f);
+        destRect.y = y - (destRect.h * 0.5f);
+
+        // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
+        SDL_RenderTextureRotated(renderer, texture->m_texture, NULL, &destRect, NULL, NULL, SDL_FLIP_NONE);
     }
 }
