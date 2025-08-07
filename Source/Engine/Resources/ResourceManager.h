@@ -27,7 +27,6 @@ namespace parabellum {
 		template <typename T, typename ... Args>
 
 		inline res_t<T> ResourceManager::Get(const std::string& name, Args&& ... args) {
-			//did my fucking compiler turn off?
 			std::string key = toLower(name);
 			auto iter = m_resources.find(key);
 			if (iter != m_resources.end()) {
@@ -41,7 +40,7 @@ namespace parabellum {
 				return resource;
 			}
 			//load resource
-			res_t<T> resource = std::make_shared<T>();
+			res_t<T> resource = std::make_shared<T>(); // is there something wrong here?
 			if (resource->Load(key, std::forward<Args>(args)...) == false) {
 				std::cerr << "cant load resource:" << key << std::endl;
 				return res_t<T>();
@@ -49,7 +48,7 @@ namespace parabellum {
 			//add resource to manager
 			m_resources[key] = resource;
 			return resource;
-			//return GetWithID<T>(name, name, std::f
+			//return GetWithID<T>(name, name, std::forward<Args>(args)...));
 		}
 
 		template<typename T, typename ...Args>

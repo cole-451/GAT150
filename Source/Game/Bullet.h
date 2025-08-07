@@ -8,7 +8,7 @@ public:
 	float speed = 200;
 	float rotationRate = 0;
 	Bullet() = default;
-	Bullet(const Transform& transform, parabellum::res_t<parabellum::Texture> texture) :
+	Bullet(const Transform& transform, parabellum::res_t<parabellum::Texture> texture) : // something wrong with this call.
 		Actor{ transform, texture }
 	{
 	}

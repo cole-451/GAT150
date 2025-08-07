@@ -10,7 +10,7 @@ public:
 
 	float speed = 200;
 	Enemy() = default;
-	Enemy(const Transform& transform, parabellum::res_t<parabellum::Texture> texture) :
+	Enemy(const Transform& transform, parabellum::res_t<parabellum::Texture> texture) : // also something wrong with this call
 		Actor{ transform, texture }
 	{
 	}

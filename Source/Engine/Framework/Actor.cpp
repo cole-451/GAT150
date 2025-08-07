@@ -32,5 +32,5 @@ void parabellum::Actor::Draw(Renderer& renderer)
 float parabellum::Actor::getRadius()
 {
 
-	return (m_texture) ? (m_texture->GetSize().length() * 0.5f) * m_transform.scale * 0.9f : 0;
+	return (m_texture) ? (m_texture->GetSize().length() * 0.5f) * m_transform.scale * 0.9f : 0; // check up on this
 }
