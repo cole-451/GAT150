@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Core/Logger.h"
 #include "Texture.h"
 #include <SDL3/SDL.h>
 #include <iostream>
@@ -15,7 +16,7 @@ namespace parabellum {
         }
 
         if (!TTF_Init()) {
-            std::cerr << "TTF_Init Error: " << SDL_GetError() << std::endl;
+            Logger::Error("TTF init error");
             return false;
         }
 
@@ -28,14 +29,14 @@ namespace parabellum {
     {
         current_window = SDL_CreateWindow(name.c_str(), 1280, 1024, 0);
         if (current_window == nullptr) {
-            std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+            Logger::Error("SDL initwindow error!");       
             SDL_Quit();
             return false;
         }
 
         renderer = SDL_CreateRenderer(current_window, NULL);
         if (renderer == nullptr) {
-            std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+            Logger::Error("TTF createRenderer error!");
             SDL_DestroyWindow(current_window);
             SDL_Quit();
             return false;

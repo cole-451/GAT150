@@ -1,4 +1,5 @@
 #include "AudioSys.h"
+#include "Core/Logger.h"
 #include <iostream>
 #include <fmod_errors.h>
 #include <string>
@@ -6,7 +7,7 @@
 bool parabellum::audiosys::checkFMODResult(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
 		return false;
-		std::cerr << FMOD_ErrorString(result);
+		 Logger::Error("Fmod error issue!");
 	}
 	return true;
 }
@@ -43,7 +44,7 @@ bool parabellum::audiosys::addSound(const std::string& filename, const std::stri
 	}
 
 	if (soundmap.find(key) != soundmap.end()) {
-		std::cerr << "audio name already exists" << key << std::endl;
+		Logger::Error("key already exists.");
 		return false;
 	}
 	FMOD::Sound* sound = nullptr;
@@ -60,7 +61,7 @@ bool parabellum::audiosys::playSound(const std::string& name)
 
 	//check if sound exists
 	if (soundmap.find(key) == soundmap.end()) {
-		std::cerr << "sound name doesnt exist";
+		Logger::Error("sound name doesnt exist");
 		return false;
 	}
 

@@ -1,4 +1,5 @@
 #include "File.h"
+#include "Core/Logger.h"
 #include <iostream>
 #include <istream>
 #include <fstream>
@@ -85,7 +86,7 @@ bool parabellum::File::ReadTextFile(const std::string& path, std::string& conten
 
     }
     else {
-        std::cerr << "Couldn't open the file." << std::endl;
+        Logger::Error("Cannot open file.");
     }
 
         return true;

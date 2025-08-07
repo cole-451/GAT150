@@ -3,6 +3,7 @@
 #include "../Renderer/Renderer.h"
 #include "../Engine.h"
 #include "../Core/File.h"
+#include "Core/Logger.h"
 
 namespace parabellum {
 
@@ -18,7 +19,7 @@ bool Texture::Load(const std::string& filename, Renderer& renderer)
     SDL_Surface* surface = IMG_Load(filename.c_str());
     if (surface == nullptr)
     {
-        std::cerr << "Could not load image: " << filename << std::endl;
+        Logger::Error("Could not load image.");
         return false;
     }
 
@@ -28,7 +29,7 @@ bool Texture::Load(const std::string& filename, Renderer& renderer)
     SDL_DestroySurface(surface);
     if (m_texture == nullptr)
     {
-        std::cerr << "Could not create texture: " << filename << std::endl;
+        Logger::Error("Could not create texture from surface.");
         return false;
     }
 

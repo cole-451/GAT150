@@ -2,6 +2,7 @@
 #include "Core/StringHelper.h"
 #include "Resource.h"
 #include "Core/Singleton.h"
+#include "Core/Logger.h"
 #include<map>
 #include <string>
 #include <memory>
@@ -34,7 +35,7 @@ namespace parabellum {
 				auto resource = std::dynamic_pointer_cast<T>(base);
 				//check for success
 				if (!resource) {
-					std::cerr << "Resource type mismatch: " << key << std::endl;
+					Logger::Error("Resource type mismatch");					
 					return res_t<T>();
 				}
 				return resource;
@@ -42,7 +43,7 @@ namespace parabellum {
 			//load resource
 			res_t<T> resource = std::make_shared<T>(); // is there something wrong here?
 			if (resource->Load(key, std::forward<Args>(args)...) == false) {
-				std::cerr << "cant load resource:" << key << std::endl;
+				Logger::Error("Could not load resource.");
 				return res_t<T>();
 			}
 			//add resource to manager
@@ -61,7 +62,7 @@ namespace parabellum {
 				auto resource = std::dynamic_pointer_cast<T>(base);
 				//check for success
 				if (!resource) {
-					std::cerr << "Resource type mismatch: " << key << std::endl;
+					Logger::Error("Resource type mismatch");
 					return res_t<T>();
 				}
 				return resource;
@@ -69,7 +70,7 @@ namespace parabellum {
 			//load resource
 			res_t<T> resource = std::make_shared<T>();
 			if (resource->Load(name, std::forward<Args>(args)...) == false) {
-				std::cerr << "cant load resource:" << name << std::endl;
+				Logger::Error("Could not load resource.");
 				return res_t<T>();
 			}
 			//add resource to manager
