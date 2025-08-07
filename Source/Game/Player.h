@@ -1,5 +1,7 @@
 #pragma once
 #include "Framework/Actor.h"
+#include "Renderer/Texture.h"
+
 
 using namespace parabellum;
 
@@ -7,8 +9,8 @@ using namespace parabellum;
 class Player : public parabellum::Actor {
 public:
 	Player() = default;
-	Player(const Transform& transform, class std::shared_ptr<parabellum::Model> model) :
-		Actor{transform, model}
+	Player(const Transform& transform, res_t<Texture> texture) :
+		Actor{transform, texture}
 	{
 	}
 

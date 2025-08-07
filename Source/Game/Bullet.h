@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/Actor.h"
+#include "Renderer/Texture.h"
 
 class Bullet : public parabellum::Actor {
 public:
@@ -7,8 +8,8 @@ public:
 	float speed = 200;
 	float rotationRate = 0;
 	Bullet() = default;
-	Bullet(const Transform& transform, class std::shared_ptr<parabellum::Model> model) :
-		Actor{ transform, model }
+	Bullet(const Transform& transform, parabellum::res_t<parabellum::Texture> texture) :
+		Actor{ transform, texture }
 	{
 	}
 

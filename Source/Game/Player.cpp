@@ -48,7 +48,7 @@ void Player::Update(float dt)
 	if (parabellum::getEngine().getInputSys().GetMouseButtonPressed(InputSystem::MouseButton::MOUSE_LEFT)) {
 		getEngine().getAudioSys().playSound("shoot");
 		std::shared_ptr<Model> model = std::make_shared<Model>(GameData::bulletPoints, vec3{ 1.0f, 1.0f, 1.0f });
-
+		//TODO: replace bullets with sprites
 
 		Transform tf(this->m_transform.position, this->m_transform.rotation, 20);
 		auto bullet = std::make_unique<Bullet>(tf, model);

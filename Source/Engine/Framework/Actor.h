@@ -29,9 +29,9 @@ namespace parabellum {
 		float lifespan = 0;
 
 		Actor() = default;
-		Actor(const Transform& transform, class std::shared_ptr<Model> model) : //todo: replace the model system with a sprite system
+		Actor(const Transform& transform, res_t<Texture> texture) : //todo: replace the model system with a sprite system
 			m_transform{ transform },
-			m_model{ model }
+			m_texture{ texture }
 			//m_scene{scene}
 		{
 		}
@@ -46,9 +46,9 @@ namespace parabellum {
 
 		Transform m_transform;
 		float getRadius();
-		std::shared_ptr<Model> m_model;
+		//std::shared_ptr<Model> m_model;
 		Scene* m_scene;
-
+		res_t<Texture> m_texture;
 	protected:
 
 	};

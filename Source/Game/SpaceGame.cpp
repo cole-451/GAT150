@@ -140,11 +140,12 @@ void parabellum::SpaceGame::spawnEnemy()
     
 }
     void::parabellum::SpaceGame::spawnPlayer() {
-        std::shared_ptr<Model> model = std::make_shared<Model>(GameData::shipPoints, vec3{ 1.0f, 0.5f, 0.0f });
+        //std::shared_ptr<Model> model = std::make_shared<Model>(GameData::shipPoints, vec3{ 1.0f, 0.5f, 0.0f });
+
 
 
         Transform tf(vec2{ 500,500 }, 0.0f, 5.0f);
-        auto player = std::make_unique<Player>(tf, model);
+        auto player = std::make_unique<Player>(tf, Resources().Get<Texture>("spr_enemy_default.png")); // renderer is not in the constructor
         player->name = "Player";
         player->tag = "player";
         player->speed = 500;

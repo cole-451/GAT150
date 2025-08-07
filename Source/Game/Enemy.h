@@ -1,5 +1,8 @@
 #pragma once
 #include "Framework/Actor.h"
+#include "Renderer/Texture.h"
+
+
 
 
 class Enemy : public parabellum::Actor {
@@ -7,8 +10,8 @@ public:
 
 	float speed = 200;
 	Enemy() = default;
-	Enemy(const Transform& transform, class std::shared_ptr<parabellum::Model> model) :
-		Actor{ transform, model }
+	Enemy(const Transform& transform, parabellum::res_t<parabellum::Texture> texture) :
+		Actor{ transform, texture }
 	{
 	}
 
