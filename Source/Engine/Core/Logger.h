@@ -67,7 +67,7 @@ namespace parabellum {
 			std::string output = color + prefix + message + reset + "\n";
 			
 			
-			std::cout << output; // I don't think I should touch this one. I don't understand what to change this to.
+			std::cerr << output; // I don't think I should touch this one. I don't understand what to change this to.
 		}
 
 		template<typename... Args>
