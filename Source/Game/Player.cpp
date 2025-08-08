@@ -29,7 +29,7 @@ void Player::Update(float dt)
 		rotate += 1;
 	}
 	vec2 mousepos = getEngine().getInputSys().getMousePos();
-	m_transform.rotation = math::radius_to_degrees(( mousepos - m_transform.position).Angle()); // supposed to track mouse position to rotate
+	m_transform.rotation = math::radius_to_degrees( mousepos.Angle()); // supposed to track mouse position to rotate
 	//std::cout << m_transform.rotation << std::endl;
 		//m_transform.rotation += (rotate * rotationRate) * dt;
 
@@ -53,7 +53,7 @@ void Player::Update(float dt)
 
 		//TODO: replace bullets with sprites
 
-		Transform tf(this->m_transform.position, this->m_transform.rotation, 20);
+		Transform tf(this->m_transform.position, this->m_transform.rotation, 3);
 		auto bullet = std::make_unique<Bullet>(tf, model);
 		bullet->name = "Bullet";
 		bullet->tag = "player";

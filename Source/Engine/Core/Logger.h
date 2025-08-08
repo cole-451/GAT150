@@ -28,6 +28,11 @@ namespace parabellum {
 			s_enabledLevels = levels;
 		}
 
+		/// <summary>
+		/// Logs a message to the standard error stream with a colored prefix based on the specified log level.
+		/// </summary>
+		/// <param name="level">The severity level of the log message (e.g., Info, Warning, Error, Debug).</param>
+		/// <param name="message">The message to be logged.</param>
 		static void Log(LogLevel level, const std::string& message) {
 
 			if ((s_enabledLevels & level) == LogLevel::None) return;
@@ -62,7 +67,7 @@ namespace parabellum {
 			std::string output = color + prefix + message + reset + "\n";
 			
 			
-			std::cerr << output; // I don't think I should touch this one. I don't understand what to do.
+			std::cout << output; // I don't think I should touch this one. I don't understand what to change this to.
 		}
 
 		template<typename... Args>

@@ -86,7 +86,7 @@ bool parabellum::File::ReadTextFile(const std::string& path, std::string& conten
 
     }
     else {
-        Logger::Error("Cannot open file.");
+        Logger::Error("Cannot open file: ", path);
     }
 
         return true;

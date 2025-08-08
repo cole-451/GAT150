@@ -61,7 +61,7 @@ bool parabellum::audiosys::playSound(const std::string& name)
 
 	//check if sound exists
 	if (soundmap.find(key) == soundmap.end()) {
-		Logger::Error("sound name doesnt exist");
+		Logger::Error("Sound doesn't exist: ", key);
 		return false;
 	}
 
