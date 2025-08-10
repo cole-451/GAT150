@@ -110,6 +110,6 @@ namespace parabellum {
         destRect.y = y - (destRect.h * 0.5f);
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
-        SDL_RenderTextureRotated(renderer, texture->m_texture, NULL, &destRect, NULL, NULL, SDL_FLIP_NONE);
+        SDL_RenderTextureRotated(renderer, texture->m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
     }
 }

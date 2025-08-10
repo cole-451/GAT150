@@ -29,7 +29,9 @@ void Player::Update(float dt)
 		rotate += 1;
 	}
 	vec2 mousepos = getEngine().getInputSys().getMousePos();
-	m_transform.rotation = math::radius_to_degrees( mousepos.Angle()); // supposed to track mouse position to rotate
+	float angle = (mousepos - m_transform.position).Angle();
+	//use mouse position relative to the actual player's position
+	m_transform.rotation = math::radius_to_degrees(angle); // supposed to track mouse position to rotate
 	//rotation works, but sprite is not updating
 	//std::cout << m_transform.rotation << std::endl;
 		//m_transform.rotation += (rotate * rotationRate) * dt;

@@ -31,5 +31,5 @@ void parabellum::Actor::Draw(Renderer& renderer)
 /// <returns>The computed radius of the actor. Returns 0 if no texture is assigned.</returns>
 float parabellum::Actor::getRadius()
 {
-	return (m_texture) ? (m_texture->GetSize().length() ) * m_transform.scale : 0.0f; // check up on this
+	return (m_texture) ? (m_texture->GetSize().length() * 0.5f ) * m_transform.scale * 0.5f : 0; // check up on this
 }
