@@ -30,6 +30,7 @@ void Player::Update(float dt)
 	}
 	vec2 mousepos = getEngine().getInputSys().getMousePos();
 	m_transform.rotation = math::radius_to_degrees( mousepos.Angle()); // supposed to track mouse position to rotate
+	//rotation works, but sprite is not updating
 	//std::cout << m_transform.rotation << std::endl;
 		//m_transform.rotation += (rotate * rotationRate) * dt;
 
@@ -38,6 +39,7 @@ void Player::Update(float dt)
 	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_S)) thrust = -1;
 	vec2 direction{ 1,0 };
 	vec2 force = direction.Rotate(math::degrees_to_radius(m_transform.rotation)) * thrust * speed;
+	// something wrong here, perhaps?
 	velocity += force * dt;
 	// Can only move back and forth, so thrust does technically work!
 
@@ -53,16 +55,14 @@ void Player::Update(float dt)
 
 		//TODO: replace bullets with sprites
 
-		Transform tf(this->m_transform.position, this->m_transform.rotation, 3);
+		Transform tf(this->m_transform.position, this->m_transform.rotation, 0.25);
 		auto bullet = std::make_unique<Bullet>(tf, model);
 		bullet->name = "Bullet";
 		bullet->tag = "player";
 		bullet->speed = 9999999;
 		bullet->lifespan = 2.0f;
 		m_scene->AddActor(std::move(bullet));
-		// problem with the scene? it seems like its not pointing to a real scene when its out of update.
-		// upon further review, it is something to do with the list; i dont think it can fully add bullet
-		// when AddActor is calling this, it cannot seem to actually connect the scene or game? I'm confused. m_game is null there.
+		
 	}
 
 	//ADDITIONAL: later, we can make some homing rockets or a ray that can make enemies join us
@@ -79,9 +79,9 @@ void Player::onCollision(Actor* other)
 			m_scene->getGame()->setLives(m_scene->getGame()->getLives() - 1);
 			return;
 		}*/
-		stillAlive = false;
+		//stillAlive = false;
 
-		dynamic_cast<SpaceGame*>(m_scene->getGame())->onPlayerDead();
+		//dynamic_cast<SpaceGame*>(m_scene->getGame())->onPlayerDead(); since collision is bugged, look into this
 		//getEngine().GTFO();
 		//exit(1);
 	}

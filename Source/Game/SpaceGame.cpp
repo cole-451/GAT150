@@ -125,11 +125,11 @@ void parabellum::SpaceGame::spawnEnemy()
 {
     Actor* player = m_scene->GetActorByName("player");
     if (player) {    
-        Transform transform{ vec2{ parabellum::random::getReal() * 1280, parabellum::random::getReal() * 1024 }, 0, 5.0f };
+        Transform transform{ vec2{ parabellum::random::getReal() * 1280, parabellum::random::getReal() * 1024 }, 0, 0.25f };
 
 
         //std::shared_ptr<Model> model = std::make_shared<Model>(GameData::enemyPoints, vec3{ 1.0f, 0.0f, 0.0f });
-        auto model = Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer());
+        auto model = Resources().Get<Texture>("the_legend.jpg", getEngine().getRenderer());
         std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, model);
         enemy->name = "enemy";
         enemy->tag = "enemy";
