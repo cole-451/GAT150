@@ -21,11 +21,17 @@ namespace parabellum {
 				iter++;
 			}
 		}
-		for (auto& actorB : actors) {
-			for (auto& actorA : actors) {
+
+		for (auto& actorA : actors) {
+			for (auto& actorB : actors) {
+				if (actorA == actorB || (!actorA->stillAlive || !actorB->stillAlive)) continue;
 				//if one is destroyed, dont do anything
+
 				float distance = vec2{ actorA->m_transform.position - actorB->m_transform.position}.length();
-				if (distance <= actorA->getRadius() * actorB->getRadius()) {
+				std::cout << actorA->getRadius() << " " << actorB->getRadius() << std::endl;
+
+				// if your distance is less than or equal to the SUM of both of the actor's radius
+					if (distance <= actorA->getRadius() + actorB->getRadius()){
 					actorA->onCollision(actorB.get());
 					actorB->onCollision(actorA.get());
 				}

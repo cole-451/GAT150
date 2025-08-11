@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
     std::vector<FMOD::Sound*> sounds;
 
     for (int i = 0; i < 100; i++) {
-        stars.push_back(vec2{random::getReal() * 1280.0f, random::getReal() * 1024.0f});
+        stars.push_back(vec2{random::getReal() * 1280.0f, random::getReal(1024.0f) });
     }
 	vec2 v(30, 40);
    

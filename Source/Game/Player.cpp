@@ -81,9 +81,9 @@ void Player::onCollision(Actor* other)
 			m_scene->getGame()->setLives(m_scene->getGame()->getLives() - 1);
 			return;
 		}*/
-		//stillAlive = false;
+		stillAlive = false;
 
-		//dynamic_cast<SpaceGame*>(m_scene->getGame())->onPlayerDead(); since collision is bugged, look into this
+		dynamic_cast<SpaceGame*>(m_scene->getGame())->onPlayerDead();
 		//getEngine().GTFO();
 		//exit(1);
 	}
