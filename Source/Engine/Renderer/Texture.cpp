@@ -1,9 +1,8 @@
 #include "Texture.h"
-#include "../Math/Vector2.h"
 #include "../Renderer/Renderer.h"
 #include "../Engine.h"
-#include "../Core/File.h"
-#include "Core/Logger.h"
+
+
 
 namespace parabellum {
 

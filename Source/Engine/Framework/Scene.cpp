@@ -1,15 +1,16 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "../Renderer/Renderer.h"
-#include <memory>
-#include <vector>
-#include "../Core/StringHelper.h"
+
 
 
 namespace parabellum {
 	void Scene::Update(float dt) {
 		for (auto& actor : actors) {
+			if (actor->active) {
+
 			actor->Update(dt);
+			}
 		}
 		
 		//remove destroyed actors
@@ -41,7 +42,10 @@ namespace parabellum {
 
 	void Scene::Draw(class Renderer& renderer) {
 		for (auto& actor : actors) {
+			if (actor->active) {
+
 			actor->Draw(renderer);
+			}
 		}
 	}
 	void Scene::AddActor(std::unique_ptr<Actor> actor)

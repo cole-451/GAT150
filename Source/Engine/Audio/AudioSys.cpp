@@ -1,8 +1,5 @@
 #include "AudioSys.h"
-#include "Core/Logger.h"
-#include <iostream>
-#include <fmod_errors.h>
-#include <string>
+
 
 bool parabellum::audiosys::checkFMODResult(FMOD_RESULT result) {
 	if (result != FMOD_OK) {

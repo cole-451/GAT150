@@ -1,11 +1,6 @@
 #include "Enemy.h"
 #include "Engine.h"
-#include "Framework/Scene.h"
-#include "Renderer/Renderer.h"
-#include "Math/Math.h"
-#include "Renderer/ParticleSystem.h"
-#include "Framework/Game.h"
-#include "Core/Random.h"
+
 
 void Enemy::Update(float dt)
 {

@@ -1,18 +1,9 @@
 #include "SpaceGame.h"
-#include "Math/Vector2.h"
-#include "Renderer/Model.h"
-#include "Core/Random.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Math/Transform.h"
-#include <memory>
-#include "Framework/Scene.h"
 #include "Engine.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/Font.h"
 #include "GameData.h"
-#include "Framework/Game.h"
-#include "Resources/ResourceManager.h"
+
 
 using namespace parabellum;
 bool SpaceGame::initialize() 

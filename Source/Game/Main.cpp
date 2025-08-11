@@ -1,33 +1,11 @@
-#include <SDL3/SDL.h>
-#include <iostream>
-#include "Core/random.h"
-#include "Core/StringHelper.h"
-#include "Renderer/Renderer.h"
-#include "Math/Vector2.h"
-#include "Math/Vector3.h"
-#include "Math/Transform.h"
-#include <vector>
-#include "Input/InputSystem.h"
-#include "Audio/AudioSys.h"
-#include "Renderer/Model.h"
-#include"Core/Time.h"
-#include "Framework/Actor.h"
+
 
 #include "Player.h"
-#include "Framework/Scene.h"
 #include "SpaceGame.h"
-#include "Renderer/Font.h"
-#include "Renderer/Text.h"
-#include "Core/File.h"
-#include "Renderer/Texture.h"
-#include "Resources/Resource.h"
-#include "Resources/ResourceManager.h"
+
 
 
 #include "Engine.h"
-
-#include <fmod.hpp>
-#include <memory>
 
 
 using namespace parabellum;
@@ -38,9 +16,6 @@ int main(int argc, char* argv[]) {
     parabellum::File::SetCurrentDirectory("Assets");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
-
-   
-
 
     //inits.
   
@@ -92,11 +67,8 @@ int main(int argc, char* argv[]) {
 
 
     getEngine().getAudioSys().playSound("bass");
-    //std::shared_ptr<Texture> texture = std::make_shared<Texture>();
     auto texture = parabellum::Resources().Get<parabellum::Texture>("the_legend.jpg", getEngine().getRenderer());
-    // create texture, using shared_ptr so texture can be shared
 
-    //texture->Load("the_legend.jpg", getEngine().getRenderer());
 
     //MAIN LOOP
     while (!quit) {
@@ -128,25 +100,15 @@ int main(int argc, char* argv[]) {
         //background drawing and updating.
         getEngine().getRenderer().setColor((uint8_t) 0, (uint8_t)0, (uint8_t)0);
         getEngine().getRenderer().clear(); // make the background black
-        for (auto& star : stars) {
-            star += speed; // Move each star by speed
-            if (star[0] > 1280 || star[1] > 1024) {
-                star.x = 0;
-            }
-            getEngine().getRenderer().setColor((uint8_t)random::getInt() * 255, (uint8_t)random::getInt() * (uint8_t)random::getInt() * 255, (uint8_t)0, (uint8_t)255);
-            getEngine().getRenderer().drawdot(star.x, star.y); // Draw each star
-        }
+       
        
         spacegame->Update();
         spacegame->Draw(getEngine().getRenderer());
-
-       // getEngine().getRenderer().DrawTexture(texture.get(), 30, 30, 0);
 
         getEngine().getRenderer().present(); // Render the screen
     }
 
 
-    //getEngine().getRenderer().GTFO();
     
     spacegame.release();
     getEngine().GTFO();

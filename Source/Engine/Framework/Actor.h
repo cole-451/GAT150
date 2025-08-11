@@ -1,4 +1,5 @@
 #pragma once
+#include "Component.h"
 #include "../Math/Transform.h"
 #include "../Renderer/Model.h"
 #include <string>
@@ -13,7 +14,7 @@ namespace parabellum {
 
 	class Scene; 
 	
-	class Actor {
+	class Actor : public Component {
 	public:
 
 		std::string name;
@@ -44,11 +45,14 @@ namespace parabellum {
 
 		virtual void onCollision(Actor* other) = 0;
 
+		void addComponent(std::unique_ptr<Component> component);
+
 		Transform m_transform;
 		float getRadius();
 		//std::shared_ptr<Model> m_model;
 		Scene* m_scene{ nullptr };
 		res_t<Texture> m_texture;
+		std::vector<std::unique_ptr<Component>> m_components;
 	protected:
 
 	};

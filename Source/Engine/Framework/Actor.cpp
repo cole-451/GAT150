@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include "../Renderer/Renderer.h"
+#include "Components/RendererComponent.h"
 
 void parabellum::Actor::Update(float dt)
 {
@@ -14,15 +15,28 @@ void parabellum::Actor::Update(float dt)
 		}
 	}
 
+	for (auto& component : m_components) {
+		if (component->active) {
+		component->Update(dt);
+		}
+	}
+
 	m_transform.position += velocity * dt;
-	//velocity *= 0; the overloads are const and DO NOT like this
 
 }
 
 void parabellum::Actor::Draw(Renderer& renderer)
 {
+	for (auto& component : m_components) {
+		if (component->active) {
+			auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
+			if (rendererComponent) {
+			rendererComponent->draw(renderer);
+
+			}
+		}
+	}
 	renderer.DrawTexture(m_texture.get(), m_transform.position.x, m_transform.position.y, m_transform.rotation, m_transform.scale);
-	//m_model->Draw(renderer, m_transform);
 }
 
 /// <summary>
@@ -34,4 +48,10 @@ void parabellum::Actor::Draw(Renderer& renderer)
 float parabellum::Actor::getRadius()
 {
 	return (m_texture) ? (m_texture->GetSize().length() * 0.5f ) * m_transform.scale * 0.5f : 0; // check up on this
+}
+
+void parabellum::Actor::addComponent(std::unique_ptr<Component> component)
+{
+	component->owner = this;
+	m_components.push_back(std::move(component));
 }

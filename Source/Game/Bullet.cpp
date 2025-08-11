@@ -1,10 +1,7 @@
 #include "Bullet.h"
 #include "Engine.h"
 #include "Player.h"
-#include "Math/Math.h"
-#include "Renderer/Renderer.h"
-#include "Framework/Scene.h"
-#include "../Engine/Math/Vector2.h"
+
 
 
 // When you get Enemy.cpp done, paste that shit here.

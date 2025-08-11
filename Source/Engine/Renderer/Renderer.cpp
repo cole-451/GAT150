@@ -1,10 +1,6 @@
 #include "Renderer.h"
-#include "Core/Logger.h"
 #include "Texture.h"
-#include <SDL3/SDL.h>
-#include <iostream>
-#include <string>
-#include "../Math/Vector2.h"
+
 
 namespace parabellum {
 
