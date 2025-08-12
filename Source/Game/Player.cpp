@@ -51,13 +51,12 @@ void Player::Update(float dt)
 
 	if (parabellum::getEngine().getInputSys().GetMouseButtonPressed(InputSystem::MouseButton::MOUSE_LEFT)) {
 		getEngine().getAudioSys().playSound("shoot");
-		//std::shared_ptr<Model> model = std::make_shared<Model>(GameData::bulletPoints, vec3{ 1.0f, 1.0f, 1.0f });
 
-		auto model = Resources().Get<Texture>("spr_enemy_default.png", parabellum::getEngine().getRenderer());
+		auto model = Resources().Get<Texture>("bullet.png", parabellum::getEngine().getRenderer());
 
-		//TODO: replace bullets with sprites
+		//TODO: replace textures with calls to add resources
 
-		Transform tf(this->m_transform.position, this->m_transform.rotation, 0.25);
+		Transform tf(this->m_transform.position, this->m_transform.rotation, 2.0f);
 		auto bullet = std::make_unique<Bullet>(tf, model);
 		bullet->name = "Bullet";
 		bullet->tag = "player";
