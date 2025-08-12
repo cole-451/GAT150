@@ -8,10 +8,8 @@
 using namespace parabellum;
 bool SpaceGame::initialize() 
 {
-    //m_titleFont = std::make_shared<Font>();
 
      m_scoreFont = std::make_shared<Font>();
-   // m_titleFont->Load("Brianne_s_hand.ttf", 30);
      m_scoreFont->Load("Brianne_s_hand.ttf", 50);
 
     titleText = std::make_unique<Text>(parabellum::ResourceManager::Instance().GetWithID<parabellum::Font>("Brianne_s_hand.ttf", "start_font", 30.0f));
@@ -52,7 +50,6 @@ void SpaceGame::Update()
 
     case GameState::StartGame:
         m_score = 0;
-       // scoreText->Draw(getEngine().getRenderer(), 25, 25);
         spawnPlayer();
         current_state = GameState::ComeGetSome;
         break;
@@ -65,7 +62,6 @@ void SpaceGame::Update()
             spawnEnemy();
         }
         
-        //current_state = GameState::HesRottingYouKnow;
         break;
     case GameState::HesRottingYouKnow:
 
@@ -118,8 +114,6 @@ void parabellum::SpaceGame::spawnEnemy()
     if (player) {    
         Transform transform{ vec2{ parabellum::random::getReal(1280.0f), parabellum::random::getReal(1024.0f)  }, 0, 5.0f };
 
-
-        //std::shared_ptr<Model> model = std::make_shared<Model>(GameData::enemyPoints, vec3{ 1.0f, 0.0f, 0.0f });
         auto model = Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer());
         std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, model);
         enemy->name = "enemy";
@@ -132,9 +126,6 @@ void parabellum::SpaceGame::spawnEnemy()
     
 }
     void::parabellum::SpaceGame::spawnPlayer() {
-        //std::shared_ptr<Model> model = std::make_shared<Model>(GameData::shipPoints, vec3{ 1.0f, 0.5f, 0.0f });
-
-
 
         Transform tf(vec2{ 500,500 }, 0.0f, 5.0f);
         auto player = std::make_unique<Player>(tf, Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer())); // renderer is not in the constructor

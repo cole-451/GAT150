@@ -8,20 +8,21 @@ void parabellum::Actor::Update(float dt)
 	//check to see if actor is dead
 	if (!stillAlive) { return; }
 
-	if (lifespan != 0) {
+	if (lifespan > 0) {
 		lifespan -= dt;
 		if (lifespan <= 0) {
 			stillAlive = false;
+			return;
 		}
 	}
 
+	//update all components
 	for (auto& component : m_components) {
 		if (component->active) {
 		component->Update(dt);
 		}
 	}
 
-	m_transform.position += velocity * dt;
 
 }
 
@@ -55,3 +56,5 @@ void parabellum::Actor::addComponent(std::unique_ptr<Component> component)
 	component->owner = this;
 	m_components.push_back(std::move(component));
 }
+
+

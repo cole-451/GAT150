@@ -9,7 +9,9 @@
 void Bullet::Update(float dt)
 {
 	vec2 force = vec2{ 1,0 }.Rotate(math::degrees_to_radius(m_transform.rotation)) * speed * dt;
-	velocity = force;
+	auto rb = getComponent<parabellum::RigidBody>();
+	if (rb) rb->velocity += force;
+	//velocity = force;
 
 	//if i had the wrap command working, id put it here
 	m_transform.position.x = parabellum::math::Wrap(m_transform.position.x, 0.0f, 1280.0f);

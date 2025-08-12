@@ -42,8 +42,10 @@ void Player::Update(float dt)
 	vec2 direction{ 1,0 };
 	vec2 force = direction.Rotate(math::degrees_to_radius(m_transform.rotation)) * thrust * speed;
 	// something wrong here, perhaps?
-	velocity += force * dt;
-	// Can only move back and forth, so thrust does technically work!
+	//velocity += force * dt;
+	auto rb = getComponent<parabellum::RigidBody>();
+	if (rb) rb->velocity += force * dt;
+	
 
 
 
@@ -63,6 +65,12 @@ void Player::Update(float dt)
 		bullet->speed = 9999999;
 		bullet->lifespan = 2.0f;
 		m_scene->AddActor(std::move(bullet));
+
+		//components
+		//player add component std::move spriterenderer
+
+		auto rb = std::make_unique<parabellum::RigidBody>();
+		bullet->addComponent(std::move(rb));
 		
 	}
 
