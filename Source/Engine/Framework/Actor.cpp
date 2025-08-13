@@ -22,7 +22,7 @@ void parabellum::Actor::Update(float dt)
 		component->Update(dt);
 		}
 	}
-
+	
 
 }
 
