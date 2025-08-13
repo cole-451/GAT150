@@ -82,7 +82,7 @@ namespace parabellum {
 				results.push_back(result);
 			}
 
-			return std::vector<T*>(); // fix this up! ask for the video early.
+			return results; // fix this up! ask for the video early.
 		}
 	}
 }

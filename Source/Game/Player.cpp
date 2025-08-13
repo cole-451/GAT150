@@ -44,7 +44,9 @@ void Player::Update(float dt)
 	// something wrong here, perhaps?
 	//velocity += force * dt;
 	auto rb = getComponent<parabellum::RigidBody>();
-	if (rb) rb->velocity += force * dt;
+	if (rb) {
+		rb->velocity += force * dt;
+	}
 	
 
 
@@ -67,6 +69,8 @@ void Player::Update(float dt)
 
 		auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
 		spriteRenderer->textureName = "bullet.png";
+		std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
+		bullet->addComponent(std::move(rb));
 
 		bullet->addComponent(std::move(spriteRenderer));
 		m_scene->AddActor(std::move(bullet));
@@ -74,8 +78,7 @@ void Player::Update(float dt)
 		//components
 		//player add component std::move spriterenderer
 
-		auto rb = std::make_unique<parabellum::RigidBody>();
-		bullet->addComponent(std::move(rb));
+
 		
 	}
 

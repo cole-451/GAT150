@@ -3,7 +3,7 @@
 
 namespace parabellum {
 	void RigidBody::Update(float dt) {
-		owner->m_transform.position = velocity * dt;
+		owner->m_transform.position += velocity * dt;
 }
 
 }

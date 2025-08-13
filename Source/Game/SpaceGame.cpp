@@ -123,6 +123,9 @@ void parabellum::SpaceGame::spawnEnemy()
         auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
         spriteRenderer->textureName = "spr_enemy_default.png";
 
+        std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
+        enemy->addComponent(std::move(rb));
+
         enemy->addComponent(std::move(spriteRenderer));
         m_scene->AddActor(std::move(enemy));
     }
@@ -143,6 +146,10 @@ void parabellum::SpaceGame::spawnEnemy()
 
         auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
         spriteRenderer->textureName = "spr_enemy_default.png";
+
+        std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
+        player->addComponent(std::move(rb));
+        
 
         player->addComponent(std::move(spriteRenderer)); // you need to transfer ownership, therefore, be sure to std::move!
 

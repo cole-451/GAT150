@@ -15,8 +15,11 @@ void Enemy::Update(float dt)
 	}
 	vec2 force = vec2{ 1,0 }.Rotate(parabellum::math::degrees_to_radius(m_transform.rotation)) * dt;
 	//velocity = force;
-	//auto rb = GetComponent<parabellum::RigidBody>();
-	//if rb, rb velocity += force * dt
+	getComponent<parabellum::RigidBody>()->velocity += force * dt;
+	auto rb = getComponent<parabellum::RigidBody>();
+	if (rb) {
+		rb->velocity += force * dt;
+	}
 	Actor::Update(dt);
 }
 
