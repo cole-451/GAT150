@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "../Renderer/Renderer.h"
-
+#include "Components/ColliderComponent.h"
 
 
 namespace parabellum {
@@ -22,19 +22,21 @@ namespace parabellum {
 				iter++;
 			}
 		}
-
+		//collision
 		for (auto& actorA : actors) {
 			for (auto& actorB : actors) {
 				if (actorA == actorB || (!actorA->stillAlive || !actorB->stillAlive)) continue;
 				//if one is destroyed, dont do anything
+				auto colliderA = actorA->getComponent<ColliderComponent>();
+				auto colliderB = actorB->getComponent<ColliderComponent>();
 
-				float distance = vec2{ actorA->m_transform.position - actorB->m_transform.position}.length();
-				std::cout << actorA->getRadius() << " " << actorB->getRadius() << std::endl;
+				// make sure both actors have colliders
+				if (!colliderA  || !colliderB) continue;
 
-				// if your distance is less than or equal to the SUM of both of the actor's radius
-					if (distance <= actorA->getRadius() + actorB->getRadius()){
+				if (colliderA->checkCollision(*colliderB)) {
 					actorA->onCollision(actorB.get());
 					actorB->onCollision(actorA.get());
+
 				}
 			}
 		}

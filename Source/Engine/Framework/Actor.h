@@ -52,7 +52,6 @@ namespace parabellum {
 
 
 		Transform m_transform;
-		float getRadius();
 		//std::shared_ptr<Model> m_model;
 		Scene* m_scene{ nullptr };
 
