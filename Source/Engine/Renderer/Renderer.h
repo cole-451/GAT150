@@ -14,7 +14,7 @@ namespace parabellum {
 
 		bool initialize();
 
-		bool createWindow(const std::string& name, int width, int height);
+		bool createWindow(const std::string& name, int width, int height, bool fullscreen = false);
 
 		void setColor(Uint8 r, Uint8 g, Uint8 b, Uint8  a = 185);
 

@@ -2,6 +2,8 @@
 
 #include "Player.h"
 #include "SpaceGame.h"
+#include "GamePCH.h"
+#include "EnginePCH.h"
 
 
 
@@ -16,6 +18,39 @@ int main(int argc, char* argv[]) {
     parabellum::File::SetCurrentDirectory("Assets");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
+
+    // command line arguments
+    std::cout << argc << std::endl;
+    for (int i = 0; i < argc; i++) {
+        Logger::Debug("arg{}: {}", i, argv[i]);
+    std::cout << argv[i] << std::endl;
+    }
+
+    //streams
+   
+    std::fstream stream("test.txt");
+    //std::cout << stream.rdbuf();
+    std::string line;
+    while (std::getline(stream, line)) {
+        std::cout << line << std::endl;
+    }
+
+    //user data type streams
+    //classes.
+
+    vec2 vec{ 34.5f, 32.7f };
+    std::cout << vec << std::endl;
+
+    std::string vstring("{27.4, 94.7, 100.3}");
+    std::stringstream strumg(vstring);
+    vec2 crack;
+    strumg >> crack;
+    std::cout << crack << std::endl;
+
+
+    return 0;
+
+
 
     //inits.
   

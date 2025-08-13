@@ -88,7 +88,7 @@ namespace parabellum {
 
 		template<typename... Args>
 		static void Debug(std::format_string<Args...> fmt, Args&&... args) {
-			Log(LogLevel::Error, std::format(fmt, std::forward<Args>(args)...));
+			Log(LogLevel::Debug, std::format(fmt, std::forward<Args>(args)...));
 		}
 
 	private:

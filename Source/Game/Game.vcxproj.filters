@@ -8,6 +8,9 @@
     <Filter Include="Source\Game">
       <UniqueIdentifier>{d32cd764-ad5a-40d1-a21b-af04b2d9bce4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{4b7d9de8-2d9b-4af3-9347-3e2d60028063}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -51,5 +54,10 @@
     <ClInclude Include="GamePCH.h">
       <Filter>Source</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Build\Assets\Meshes\enemy.txt">
+      <Filter>Assets</Filter>
+    </Text>
   </ItemGroup>
 </Project>

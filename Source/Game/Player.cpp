@@ -55,7 +55,9 @@ void Player::Update(float dt)
 
 	if (parabellum::getEngine().getInputSys().GetMouseButtonPressed(InputSystem::MouseButton::MOUSE_LEFT)) {
 		getEngine().getAudioSys().playSound("shoot");
-		//getEngine().getAudioSys().playSound(*Resources().Get<AudioClip>("bass.wav"), getEngine().getAudioSys()).get();
+
+		getEngine().getAudioSys().playSound(*Resources().Get<AudioClip>(("bass.wav"), getEngine().getAudioSys()).get());
+	
 
 		//auto model = Resources().Get<Texture>("bullet.png", parabellum::getEngine().getRenderer());
 
@@ -68,6 +70,7 @@ void Player::Update(float dt)
 		bullet->speed = 9999999;
 		bullet->lifespan = 2.0f;
 
+		//components
 		auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
 		spriteRenderer->textureName = "bullet.png";
 		std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
@@ -79,8 +82,7 @@ void Player::Update(float dt)
 		bullet->addComponent(std::move(collider));
 		m_scene->AddActor(std::move(bullet));
 
-		//components
-		//player add component std::move spriterenderer
+		
 
 
 		

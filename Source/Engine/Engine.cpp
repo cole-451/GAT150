@@ -9,7 +9,7 @@ namespace parabellum {
 bool Engine::initialize() {
 	m_renderer = std::make_unique<Renderer>();
 	m_renderer->initialize();
-	m_renderer->createWindow("parabellum engine", 1280, 1024);
+	m_renderer->createWindow("parabellum engine", 1280, 1024, false);
 
 	m_inputsys = std::make_unique<InputSystem>();
 	m_inputsys->initialize();
@@ -25,6 +25,7 @@ bool Engine::initialize() {
 }
 
 void Engine::GTFO() {
+	Resources().Clear();
 	m_audio->GTFO();
 	m_inputsys->GTFO();
 	m_renderer->GTFO();

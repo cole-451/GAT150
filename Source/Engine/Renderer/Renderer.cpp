@@ -21,9 +21,10 @@ namespace parabellum {
         }
     }
 
-    bool Renderer::createWindow(const std::string& name, int width, int height)
+    bool Renderer::createWindow(const std::string& name, int width, int height, bool fullscreen)
     {
-        current_window = SDL_CreateWindow(name.c_str(), 1280, 1024, 0);
+        
+        current_window = SDL_CreateWindow(name.c_str(), 1280, 1024, fullscreen ? SDL_WINDOW_FULLSCREEN: 0);
         if (current_window == nullptr) {
             Logger::Error("SDL initwindow error!");       
             SDL_Quit();
@@ -32,12 +33,13 @@ namespace parabellum {
 
         renderer = SDL_CreateRenderer(current_window, NULL);
         if (renderer == nullptr) {
-            Logger::Error("TTF createRenderer error!");
+            Logger::Error("TTF createRenderer error!", SDL_GetError());
             SDL_DestroyWindow(current_window);
             SDL_Quit();
             return false;
         }
 
+        SDL_SetRenderLogicalPresentation(renderer, 1280, 1024, SDL_LOGICAL_PRESENTATION_LETTERBOX); //shooting is offset here.
         return true;
     }
 
