@@ -9,8 +9,8 @@ using namespace parabellum;
 class Player : public parabellum::Actor {
 public:
 	Player() = default;
-	Player(const Transform& transform, res_t<Texture> texture) :
-		Actor{transform, texture}
+	Player(const Transform& transform) :
+		Actor{transform}
 	{
 	}
 

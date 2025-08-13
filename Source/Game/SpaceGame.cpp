@@ -114,11 +114,16 @@ void parabellum::SpaceGame::spawnEnemy()
     if (player) {    
         Transform transform{ vec2{ parabellum::random::getReal(1280.0f), parabellum::random::getReal(1024.0f)  }, 0, 5.0f };
 
-        auto model = Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer());
-        std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, model);
+        //auto model = Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer());
+        std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform);
         enemy->name = "enemy";
         enemy->tag = "enemy";
         enemy->speed = 350;
+
+        auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
+        spriteRenderer->textureName = "spr_enemy_default.png";
+
+        enemy->addComponent(std::move(spriteRenderer));
         m_scene->AddActor(std::move(enemy));
     }
 
@@ -128,11 +133,18 @@ void parabellum::SpaceGame::spawnEnemy()
     void::parabellum::SpaceGame::spawnPlayer() {
 
         Transform tf(vec2{ 500,500 }, 0.0f, 5.0f);
-        auto player = std::make_unique<Player>(tf, Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer())); // renderer is not in the constructor
+        auto player = std::make_unique<Player>(tf); // renderer is not in the constructor
+        //Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer())
         player->name = "Player";
         player->tag = "player";
         player->speed = 500;
         player->rotationRate = 2000;
+
+
+        auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
+        spriteRenderer->textureName = "spr_enemy_default.png";
+
+        player->addComponent(std::move(spriteRenderer)); // you need to transfer ownership, therefore, be sure to std::move!
 
         m_scene->AddActor(std::move(player));
     }

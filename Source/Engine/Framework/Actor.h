@@ -27,9 +27,8 @@ namespace parabellum {
 		float lifespan = 0;
 
 		Actor() = default;
-		Actor(const Transform& transform, res_t<Texture> texture) : //todo: replace the texture in your params with a component calling said texture.
-			m_transform{ transform },
-			m_texture{ texture }
+		Actor(const Transform& transform) : //todo: replace the texture in your params with a component calling said texture.
+			m_transform{ transform }
 			//m_scene{scene}
 		{
 		}
@@ -57,7 +56,6 @@ namespace parabellum {
 		//std::shared_ptr<Model> m_model;
 		Scene* m_scene{ nullptr };
 
-		res_t<Texture> m_texture;
 		std::vector<std::unique_ptr<Component>> m_components;
 	protected:
 

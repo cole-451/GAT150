@@ -37,7 +37,7 @@ void parabellum::Actor::Draw(Renderer& renderer)
 			}
 		}
 	}
-	renderer.DrawTexture(m_texture.get(), m_transform.position.x, m_transform.position.y, m_transform.rotation, m_transform.scale);
+	//renderer.DrawTexture(m_texture.get(), m_transform.position.x, m_transform.position.y, m_transform.rotation, m_transform.scale);
 }
 
 /// <summary>
@@ -48,7 +48,8 @@ void parabellum::Actor::Draw(Renderer& renderer)
 /// 
 float parabellum::Actor::getRadius()
 {
-	return (m_texture) ? (m_texture->GetSize().length() * 0.5f ) * m_transform.scale * 0.5f : 0; // check up on this
+	return 0.0; // for now.
+	//return (m_texture) ? (m_texture->GetSize().length() * 0.5f ) * m_transform.scale * 0.5f : 0; // check up on this
 }
 
 void parabellum::Actor::addComponent(std::unique_ptr<Component> component)
