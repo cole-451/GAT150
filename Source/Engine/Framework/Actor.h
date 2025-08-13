@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "../Math/Transform.h"
-#include "../Renderer/Model.h"
+#include "../Renderer/Mesh.h"
 #include <string>
 #include <memory>
 #include "EnginePCH.h"

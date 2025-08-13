@@ -1,12 +1,30 @@
-#include "Model.h"
+#include "Mesh.h"
 #include "Renderer.h"
+#include "Core/File.h"
 
 
 
 
 
 namespace parabellum {
-	void Model::Draw(class Renderer& renderer, const vec2 position, float rotation, float scale) {
+	bool Mesh::Load(const std::string& filename)
+	{
+		std::string buffer;
+
+		if (!parabellum::File::ReadTextFile(filename, buffer)) {
+			Logger::Error("cant read your file lil bro");
+		}
+		std::stringstream stream(buffer);
+
+		stream >> m_color;
+		vec2 point;
+
+		while (stream >> point) {
+			m_points.push_back(point);
+		}
+		return true;
+	}
+	void Mesh::Draw(class Renderer& renderer, const vec2 position, float rotation, float scale) {
 
 		renderer.setColor(m_color.r, m_color.g, m_color.b);
 
@@ -20,11 +38,11 @@ namespace parabellum {
 			renderer.drawline(p1.x, p1.y, p2.x, p2.y);
 		}
 	}
-	void Model::Draw(Renderer& renderer, const Transform& transform)
+	void Mesh::Draw(Renderer& renderer, const Transform& transform)
 	{
 		Draw(renderer, transform.position, transform.rotation, transform.scale);
 	}
-	void Model::calculateRadius()
+	void Mesh::calculateRadius()
 	{
 		m_radius = 0;
 
