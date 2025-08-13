@@ -187,6 +187,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio\AudioClip.cpp" />
     <ClCompile Include="Audio\AudioSys.cpp" />
     <ClCompile Include="Components\CircleCollide2D.cpp" />
     <ClCompile Include="Components\RigidBody.cpp" />

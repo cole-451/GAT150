@@ -1,4 +1,5 @@
 #include "AudioSys.h"
+#include "AudioClip.h"
 
 
 bool parabellum::audiosys::checkFMODResult(FMOD_RESULT result) {
@@ -63,6 +64,13 @@ bool parabellum::audiosys::playSound(const std::string& name)
 	}
 
 	system->playSound(soundmap[key], 0, false, nullptr);
+	return true;
+}
+
+bool parabellum::audiosys::playSound(AudioClip& clip)
+{
+	FMOD_RESULT result = system->playSound(clip.m_sound, 0, false, nullptr);
+	if (!checkFMODResult(result)) return false;
 	return true;
 }
 

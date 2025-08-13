@@ -6,6 +6,7 @@
 //audio
 
 #include "Audio/AudioSys.h"
+#include "Audio/AudioClip.h"
 //input
 #include "Input/InputSystem.h"
 

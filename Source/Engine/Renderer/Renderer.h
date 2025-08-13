@@ -35,8 +35,8 @@ namespace parabellum {
 		int getHeight() const { return w_height; }
 
 		friend class Texture;
-		void DrawTexture(Texture* texture, float x, float y);
-		void DrawTexture(Texture* texture, float x, float y, float angle, float scale = 1);
+		void DrawTexture(Texture& texture, float x, float y);
+		void DrawTexture(Texture& texture, float x, float y, float angle, float scale = 1);
 
 
 

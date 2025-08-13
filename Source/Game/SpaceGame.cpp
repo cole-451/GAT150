@@ -126,6 +126,10 @@ void parabellum::SpaceGame::spawnEnemy()
         std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
         enemy->addComponent(std::move(rb));
 
+        auto collider = std::make_unique<CircleCollide2D>();
+        collider->radius = 60;
+        enemy->addComponent(std::move(collider));
+
         enemy->addComponent(std::move(spriteRenderer));
         m_scene->AddActor(std::move(enemy));
     }
@@ -143,15 +147,18 @@ void parabellum::SpaceGame::spawnEnemy()
         player->speed = 500;
         player->rotationRate = 2000;
 
-
+        //components
         auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
         spriteRenderer->textureName = "spr_enemy_default.png";
+        auto collider = std::make_unique<CircleCollide2D>();
+        collider->radius = 60;
+        player->addComponent(std::move(collider));
 
         std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
         player->addComponent(std::move(rb));
         
-
         player->addComponent(std::move(spriteRenderer)); // you need to transfer ownership, therefore, be sure to std::move!
+
 
         m_scene->AddActor(std::move(player));
     }

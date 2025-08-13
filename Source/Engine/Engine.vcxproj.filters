@@ -89,6 +89,9 @@
     <ClCompile Include="Components\CircleCollide2D.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Audio\AudioClip.cpp">
+      <Filter>Source\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Random.h">

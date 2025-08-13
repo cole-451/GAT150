@@ -19,9 +19,12 @@ namespace parabellum {
 
 		bool playSound(const std::string& name);
 
+		bool playSound(class AudioClip& clip);
+
 	private:
+		friend class AudioClip;
 		FMOD::System* system = nullptr;
-		bool checkFMODResult(FMOD_RESULT result);
+		static bool checkFMODResult(FMOD_RESULT result);
 		std::map<std::string, FMOD::Sound*> soundmap;
 
 	};
