@@ -22,6 +22,11 @@ namespace parabellum {
 		while (stream >> point) {
 			m_points.push_back(point);
 		}
+
+		if (!stream.eof()) {
+			Logger::Error("Oh shit, I can't parse the whole file: ", filename);
+			return false;
+		}
 		return true;
 	}
 	void Mesh::Draw(class Renderer& renderer, const vec2 position, float rotation, float scale) {

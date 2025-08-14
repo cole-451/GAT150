@@ -22,3 +22,4 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/RigidBody.h"
 #include "Components/CircleCollide2D.h"
+#include "Components/MeshRenderer.h"
