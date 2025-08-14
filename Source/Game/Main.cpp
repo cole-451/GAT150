@@ -18,6 +18,28 @@ int main(int argc, char* argv[]) {
     parabellum::File::SetCurrentDirectory("Assets");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
+    //testing ground.
+    // load the json data from a file
+    std::string buffer;
+    File::ReadTextFile("json.txt", buffer);
+    // show the contents of the json file (debug)
+    std::cout << buffer << std::endl;
+
+    // create json document from the json file contents
+    rapidjson::Document document;
+    parabellum::json::Load("json.txt", document);
+
+    // read the age data from the json
+    int age;
+    parabellum::json::Read(document, "age", age);
+    // show the age data
+    std::cout << age << std::endl;
+
+
+
+
+
+    return 0;
     //inits.
   
     getEngine().initialize();
