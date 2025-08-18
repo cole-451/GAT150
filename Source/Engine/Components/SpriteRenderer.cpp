@@ -4,6 +4,7 @@
 
 namespace parabellum {
 
+	FACTORY_REGISTER(SpriteRenderer);
 void SpriteRenderer::Update(float dt)
 {
 	//

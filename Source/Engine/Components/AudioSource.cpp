@@ -2,6 +2,8 @@
 #include "Audio/AudioClip.h"
 #include "Engine.h"
 namespace parabellum {
+	FACTORY_REGISTER(AudioSource)
+
 	void parabellum::AudioSource::Update(float dt)
 	{
 		//

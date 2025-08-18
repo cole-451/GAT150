@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/Actor.h"
 #include "Renderer/Texture.h"
+#include "Framework/Component.h"
 
 
 

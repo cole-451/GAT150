@@ -4,72 +4,24 @@
 #include "SpaceGame.h"
 #include "GamePCH.h"
 #include "EnginePCH.h"
-
-
-
 #include "Engine.h"
 
 
 using namespace parabellum;
 
-int main(int argc, char* argv[]) {
 
-   
+int main(int argc, char* argv[]) {
     parabellum::File::SetCurrentDirectory("Assets");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
-    //testing ground.
 
-    // load the json data from a file
-    std::string buffer;
-    File::ReadTextFile("json.txt", buffer);
-    // show the contents of the json file (debug)
-    std::cout << buffer << std::endl;
+    auto spriterenderer = Factory::Instance().Create("MeshRenderer");
+    spriterenderer->name = "kevin";
 
-    // create json document from the json file contents
-    rapidjson::Document document;
-    parabellum::json::Load("json.txt", document);
-
-    // read the age data from the json
-    int age;
-    parabellum::json::Read(document, "age", age);
-    // show the age data
-    std::cout << age << std::endl;
-    
-    // read/show the data from the json file
-    std::string name;
-    //int age;
-    float speed;
-    bool isAwake;
-    vec2 position;
-    vec3 color;
-
-    // read the json data
-    
-
-    JSON_READ(document, name);
-    JSON_READ(document, age);
-    JSON_READ(document, speed);
-    JSON_READ(document, isAwake);
-    JSON_READ(document, position);
-    JSON_READ(document, color);
-
-
-    // show the data
-    std::cout << name << " " << age << " " << speed << " " << isAwake << std::endl;
-    std::cout << position.x << " " << position.y << std::endl;
-    std::cout << color.r << " " << color.g << " " << color.b << " " << std::endl;
-
-
-
-
-
-    return 0;
     //inits.
-  
     getEngine().initialize();
     SDL_Init(SDL_INIT_VIDEO);
-
+    
     //initialize sounds
 
     getEngine().getAudioSys().addSound("bass.wav", "bass");

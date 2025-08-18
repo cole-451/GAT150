@@ -1,6 +1,8 @@
 #include "MeshRenderer.h"
 
 namespace parabellum {
+ FACTORY_REGISTER(MeshRenderer) 
+
 	void parabellum::MeshRenderer::Update(float dt)
 	{
 		//

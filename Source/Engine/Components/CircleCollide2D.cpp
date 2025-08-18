@@ -1,6 +1,7 @@
 #include "CircleCollide2D.h"
 
 namespace parabellum {
+    FACTORY_REGISTER(CircleCollide2D)
 
 void CircleCollide2D::Update(float dt)
 {
