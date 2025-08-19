@@ -27,7 +27,7 @@ namespace parabellum {
 		requires std::derived_from<T, Object>
 
 
-	class Creator: public CreatorBase {
+	class Creator : public CreatorBase {
 	public:
 		std::unique_ptr<Object> Create() override {
 			return std::make_unique<T>();
@@ -67,9 +67,17 @@ namespace parabellum {
 		auto it = m_registry.find(key);
 		if (it != m_registry.end()) {
 
-			return it->second->Create();
+			auto object = it->second->Create();
+			T* derived = dynamic_cast<T*>(object.get());
+			if (derived) {
+				object.release();
+				return std::unique_ptr<T>(derived);
+			}
+			Logger::Error("Mismatching factory object type : {}", name);
 		}
-		Logger::Error("Could not create factory object : {}", name);
+		else {
+			Logger::Error("Could not create factory object : {}", name);
+		}
 		return std::unique_ptr<T>();
 	}
 }

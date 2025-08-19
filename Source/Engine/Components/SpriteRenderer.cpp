@@ -19,4 +19,10 @@ void SpriteRenderer::draw(Renderer& renderer)
 	}
 	
 }
+void SpriteRenderer::Read(const json::value_t& value)
+{
+	Object::Read(value);
+	Component::Read(value);
+	JSON_READ(value, textureName);
+}
 }

@@ -13,6 +13,8 @@
 
 namespace parabellum {
 
+	
+
 	class Scene;
 
 	class Actor : public Object {
@@ -39,7 +41,7 @@ namespace parabellum {
 
 		Transform& GetTransform() { return m_transform; }
 
-		virtual void onCollision(Actor* other) = 0;
+		virtual void onCollision(Actor* other) {}
 
 		void addComponent(std::unique_ptr<Component> component);
 
@@ -56,7 +58,11 @@ namespace parabellum {
 		Scene* m_scene{ nullptr };
 
 		std::vector<std::unique_ptr<Component>> m_components;
+		// Inherited via Serializable
+		void Read(const json::value_t& value) override;
 	protected:
+
+
 
 	};
 	template<typename T>

@@ -1,0 +1,31 @@
+{
+  "actors": [
+    {
+      "name": "sprite",
+      "lifespan":  5,
+      "m_transform": {
+        "position": [ 400, 300 ],
+        "rotation": 30,
+        "scale": 4
+      },
+      "components": [
+        {
+          "type": "SpriteRenderer",
+          "textureName": "the_legend.png"
+        },
+        {
+
+        }
+      ]
+    },
+    {
+
+    },
+    {
+
+    }
+  ]
+
+
+
+}

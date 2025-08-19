@@ -6,7 +6,7 @@
 #include <iostream>
 
 namespace parabellum {
-	bool json::Load(const std::string& filename, rapidjson::Document& document)
+	bool json::Load(const std::string& filename, document_t& document)
 	{
 		// read the file into a string
 		std::string buffer;
@@ -28,7 +28,7 @@ namespace parabellum {
 		}
 		return true;
 	}
-	bool json::Read(const rapidjson::Value& value, const std::string& name, int& data)
+	bool json::Read(const value_t& value, const std::string& name, int& data)
 	{
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsInt()) {
@@ -41,7 +41,7 @@ namespace parabellum {
 
 		return true;
 	}
-	bool json::Read(const rapidjson::Value& value, const std::string& name, float& data)
+	bool json::Read(const value_t& value, const std::string& name, float& data)
 	{
 
 		// check if the value has the "<name>" and the correct data type
@@ -55,7 +55,7 @@ namespace parabellum {
 
 		return true;
 	}
-	bool json::Read(const rapidjson::Value& value, const std::string& name, bool& data)
+	bool json::Read(const value_t& value, const std::string& name, bool& data)
 	{
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsBool()) {
@@ -68,7 +68,7 @@ namespace parabellum {
 
 		return true;
 	}
-	bool json::Read(const rapidjson::Value& value, const std::string& name, std::string& data)
+	bool json::Read(const value_t& value, const std::string& name, std::string& data)
 	{
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsString()) {
@@ -81,7 +81,7 @@ namespace parabellum {
 
 		return true;
 	}
-	bool json::Read(const rapidjson::Value& value, const std::string& name, vec2& data)
+	bool json::Read(const value_t& value, const std::string& name, vec2& data)
 	{
 		// check if the value has the "<name>" and is an array with 2 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2) {
@@ -104,7 +104,7 @@ namespace parabellum {
 
 		return true;
 	}
-	bool json::Read(const rapidjson::Value& value, const std::string& name, vec3& data)
+	bool json::Read(const value_t& value, const std::string& name, vec3& data)
 	{
 		// check if the value has the "<name>" and is an array with 2 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 3) {

@@ -1,7 +1,10 @@
 #pragma once
 #include "Vector2.h"
+#include "Core/Serializable.h"
 
-struct Transform {
+namespace parabellum {
+
+struct Transform : public parabellum::Serializable {
 	vec2 position;
 	float rotation;
 	float scale;
@@ -12,4 +15,7 @@ struct Transform {
 		rotation{rotation},
 		scale{scale}
 	{ }
+
+	void Read(const parabellum::json::value_t& value);
 };
+}

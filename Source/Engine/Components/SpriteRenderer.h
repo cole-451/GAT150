@@ -13,5 +13,8 @@ namespace parabellum {
 
 	public:
 		std::string textureName;
+
+		// Inherited via Serializable
+		void Read(const json::value_t& value) override;
 	};
 }

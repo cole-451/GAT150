@@ -4,9 +4,10 @@
 #include "Actor.h"
 #include "../Core/StringHelper.h"
 #include <list>
+#include "Core/Serializable.h"
 
 namespace parabellum {
-	class Scene {
+	class Scene : public Serializable {
 	public:
 		Scene(class Game* game) :
 			m_game{game}{ }
@@ -27,6 +28,8 @@ namespace parabellum {
 
 		class Game* getGame() { return m_game; }
 
+		// Inherited via Serializable
+		void Read(const json::value_t& value) override;
 
 
 	private:
@@ -35,6 +38,8 @@ namespace parabellum {
 
 		
 		std::list<std::unique_ptr<Actor>> actors; //list is having a lot of trouble.
+
+
 
 	};
 	template <typename T>

@@ -2,19 +2,15 @@
 #include "Framework/Actor.h"
 #include "Renderer/Texture.h"
 #include "Framework/Component.h"
+#include "Core/Factory.h"
 
 
-
-
-class Enemy : public parabellum::Actor {
+namespace parabellum{
+class Enemy : public Component {
 public:
 
 	float speed = 200;
 	Enemy() = default;
-	Enemy(const Transform& transform) : // also something wrong with this call
-		Actor{ transform }
-	{
-	}
 
 	void Update(float dt) override;
 private:
@@ -23,6 +19,7 @@ private:
 
 
 	// Inherited via Actor
-	void onCollision(Actor* other) override;
+	void onCollision(class parabellum::Actor* other) ;
 
 };
+}

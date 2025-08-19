@@ -6,15 +6,10 @@
 using namespace parabellum;
 
 
-class Player : public parabellum::Actor {
+class Player : public parabellum::Component {
 public:
 	Player() = default;
-	Player(const Transform& transform) :
-		Actor{transform}
-	{
-	}
-
-	//void Draw(Renderer& renderer) override;
+	
 
 
 
@@ -26,6 +21,6 @@ private:
 
 
 	// Inherited via Actor
-	void onCollision(Actor* other) override;
+	void onCollision(class parabellum::Actor* other);
 
 };
