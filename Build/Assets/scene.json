@@ -1,29 +1,23 @@
 {
   "actors": [
     {
-      "name": "sprite",
-      "lifespan":  5,
+      "name": "background",
+      "tag": "background",
+      "active":  1,
       "m_transform": {
-        "position": [ 400, 300 ],
-        "rotation": 30,
-        "scale": 4
+        "position": [ 400.0, 300.0 ],
+        "rotation": 30.0,
+        "scale": 4.0
       },
       "components": [
         {
           "type": "SpriteRenderer",
-          "textureName": "the_legend.png"
-        },
-        {
-
+          "textureName": "space-background.jpg"
         }
+
       ]
-    },
-    {
-
-    },
-    {
-
     }
+
   ]
 
 

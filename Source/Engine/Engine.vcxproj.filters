@@ -101,11 +101,11 @@
     <ClCompile Include="Components\AudioSource.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Math\Transform.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Object.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Transform.cpp">
+      <Filter>Source\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

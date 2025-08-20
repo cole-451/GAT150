@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "../Renderer/Renderer.h"
 #include "Components/ColliderComponent.h"
+#include "Core/StringHelper.h"
 
 
 namespace parabellum {
@@ -9,10 +10,10 @@ namespace parabellum {
 		for (auto& actor : actors) {
 			if (actor->active) {
 
-			actor->Update(dt);
+				actor->Update(dt);
 			}
 		}
-		
+
 		//remove destroyed actors
 		for (auto iter = actors.begin(); iter != actors.end();) {
 			if (!(*iter)->stillAlive) {
@@ -31,7 +32,7 @@ namespace parabellum {
 				auto colliderB = actorB->getComponent<ColliderComponent>();
 
 				// make sure both actors have colliders
-				if (!colliderA  || !colliderB) continue;
+				if (!colliderA || !colliderB) continue;
 
 				if (colliderA->checkCollision(*colliderB)) {
 					actorA->onCollision(actorB.get());
@@ -46,7 +47,7 @@ namespace parabellum {
 		for (auto& actor : actors) {
 			if (actor->active) {
 
-			actor->Draw(renderer);
+				actor->Draw(renderer);
 			}
 		}
 	}
@@ -59,19 +60,23 @@ namespace parabellum {
 
 	void Scene::Read(const json::value_t& value)
 	{
-		for (auto& actorValue : value["actors"].GetArray()) {
-			auto actor = Factory::Instance().Create<Actor>("Actor");
-			actor->Read(actorValue);
+		//read actor
+		if (JSON_HAS(value, actors)) {
 
-			AddActor(std::move(actor));
+			for (auto& actorValue : JSON_GET(value, actors).GetArray()) {
+				auto actor = Factory::Instance().Create<Actor>("Actor");
+				actor->Read(actorValue);
+
+				AddActor(std::move(actor));
+			}
+		}
 	}
-	}
 
 
-	
-	
+
+
 
 
 	// check for collisions
-	
-	}
+
+}

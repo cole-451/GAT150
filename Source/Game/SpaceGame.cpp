@@ -19,7 +19,9 @@ bool SpaceGame::initialize()
 	scoreText = std::make_unique<Text>(m_scoreFont);
 	scoreText->Create(getEngine().getRenderer(), "" + std::to_string(m_score), vec3{ 0,1,0 });
 
+
 	m_scene = std::make_unique<Scene>(this);
+
 	json::document_t document;
 	json::Load("scene.json", document);
 	m_scene->Read(document);

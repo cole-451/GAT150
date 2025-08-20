@@ -58,12 +58,32 @@ void parabellum::Actor::addComponent(std::unique_ptr<Component> component)
 }
 void Actor::Read(const json::value_t& value)
 {
-	Object::Read(value);
+	Object::Read(value); // supposed to read the values that Object shares.
 
 	JSON_READ(value, tag);
-	JSON_READ(value, lifespan);
 
-	if (JSON_HAS(value, transform)) { m_transform.Read(JSON_GET(value, m_transform)); }
+	if (JSON_HAS(value, lifespan)) { // possibly skip over in case it does not have a lifespan
+	JSON_READ(value, lifespan);
+	}
+
+	if (JSON_HAS(value, m_transform)) { m_transform.Read(JSON_GET(value, m_transform)); }
+
+	//read components
+	if (JSON_HAS(value, components)) {
+
+		for (auto& componentValue : JSON_GET(value, components).GetArray()) {
+		std::string type;
+		JSON_READ(componentValue, type);
+			auto component = Factory::Instance().Create<Component>(type);
+			if (!component) {
+				Logger::Error("Could not create pointer for component {}", type);
+				return;
+			}
+			component->Read(componentValue); //gets a nullptr here
+
+			addComponent(std::move(component));
+		}
+	}
 
 }
 }
