@@ -9,7 +9,7 @@ using namespace parabellum;
 class Player : public parabellum::Component {
 public:
 	Player() = default;
-	
+	CLASS_PROTOTYPE(Player)
 
 
 
@@ -22,5 +22,7 @@ private:
 
 	// Inherited via Actor
 	void onCollision(class parabellum::Actor* other);
+
+	void Read(const json::value_t& value) override;
 
 };

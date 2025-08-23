@@ -8,7 +8,12 @@ namespace parabellum {
 		// Inherited via ColliderComponent
 		void Update(float dt) override;
 
+		CLASS_PROTOTYPE(CircleCollide2D)
+
+
 		bool checkCollision(ColliderComponent& other) override;
+
+		void Read(const json::value_t& value) override;
 
 	};
 }

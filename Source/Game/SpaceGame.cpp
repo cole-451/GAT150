@@ -91,6 +91,7 @@ void SpaceGame::GTFO()
 
 void SpaceGame::Draw(parabellum::Renderer& renderer)
 {
+	m_scene->Draw(renderer);
 	if (current_state == GameState::Title) {
 		titleText->Draw(getEngine().getRenderer(), 25, 25);
 
@@ -103,7 +104,6 @@ void SpaceGame::Draw(parabellum::Renderer& renderer)
 	else if (current_state == GameState::ComeGetSome) {
 		scoreText->Draw(getEngine().getRenderer(), 30, 30);
 	}
-	m_scene->Draw(renderer);
 }
 
 void parabellum::SpaceGame::onPlayerDead()
@@ -115,7 +115,7 @@ void parabellum::SpaceGame::onPlayerDead()
 	}
 }
 
-void parabellum::SpaceGame::spawnEnemy()
+void parabellum::SpaceGame::spawnEnemy() // use Instantiate here later
 {
 	/*
 	Actor* player = m_scene->GetActorByName("player");
@@ -148,11 +148,8 @@ void parabellum::SpaceGame::spawnEnemy()
 
 	*/
 }
-void::parabellum::SpaceGame::spawnPlayer() {
+void::parabellum::SpaceGame::spawnPlayer() { // use Instantiate here later
 	/*
-	Transform tf(vec2{ 500,500 }, 0.0f, 5.0f);
-	auto player = std::make_unique<Player>(tf); // renderer is not in the constructor
-	//Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer())
 	player->name = "Player";
 	player->tag = "player";
 	player->speed = 500;
@@ -177,4 +174,5 @@ void::parabellum::SpaceGame::spawnPlayer() {
 
 	m_scene->AddActor(std::move(player));
 	*/
+	
 }

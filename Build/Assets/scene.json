@@ -1,9 +1,73 @@
 {
+  "prototypes": [
+    {
+      "name": "player",
+      "tag": "player",
+      "active": true,
+      "m_transform": {
+        "position": [ 500.0, 500.0 ],
+        "rotation": 0.0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "Player",
+          "speed": 500,
+          "rotationRate": 2000
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "spr_enemy_default.png"
+        },
+        {
+          "type": "RigidBody",
+          "velocity": [ 0.0, 0.0 ]
+        },
+        {
+          "type": "CircleCollide2D",
+          "radius": 60.0
+        }
+      ]
+    },
+
+    {
+      "name": "enemy",
+      "tag": "enemy",
+      "active": true,
+      "m_transform": {
+        "position": [ 500.0, 500.0 ],
+        "rotation": 0.0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "Enemy",
+          "speed": 500,
+          "rotationRate": 2000
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "spr_enemy_default.png"
+        },
+        {
+          "type": "RigidBody",
+          "velocity": [ 0.0, 0.0 ]
+        },
+        {
+          "type": "CircleCollide2D",
+          "radius": 60.0
+        }
+
+      ]
+    }
+
+  ],
   "actors": [
     {
       "name": "background",
       "tag": "background",
-      "active":  1,
+      "active": true,
+      "persistent": "true",
       "m_transform": {
         "position": [ 400.0, 300.0 ],
         "rotation": 30.0,
@@ -16,6 +80,40 @@
         }
 
       ]
+    },
+    {
+      "name": "player",
+      "tag": "player",
+      "active": true,
+      "m_transform": {
+        "position": [ 500.0, 500.0 ],
+        "rotation": 0.0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "Player",
+          "speed": 500,
+          "rotationRate": 2000
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "spr_enemy_default.png"
+        },
+        {
+          "type": "RigidBody",
+          "velocity": [ 0.0, 0.0 ]
+        },
+        {
+          "type": "CircleCollide2D",
+          "radius": 60.0
+        }
+
+      ]
+    },
+    {
+      "name": "bullet",
+      "tag": "bullet"
     }
 
   ]

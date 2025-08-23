@@ -4,30 +4,40 @@
 
 FACTORY_REGISTER(Bullet)
 
-// When you get Enemy.cpp done, paste that shit here.
+namespace parabellum {
 
-void Bullet::Update(float dt)
-{
-	/*
-	vec2 force = vec2{ 1,0 }.Rotate(math::degrees_to_radius(m_transform.rotation)) * speed * dt;
-	auto rb = getComponent<parabellum::RigidBody>();
-	if (rb) rb->velocity = force;
-	//velocity = force;
+	// When you get Enemy.cpp done, paste that shit here.
 
-	//if i had the wrap command working, id put it here
-	m_transform.position.x = parabellum::math::Wrap(m_transform.position.x, 0.0f, 1280.0f);
-	m_transform.position.y = parabellum::math::Wrap(m_transform.position.y, 0.0f, 1024.0f);
+	void Bullet::Update(float dt)
+	{
+		/*
+		vec2 force = vec2{ 1,0 }.Rotate(math::degrees_to_radius(m_transform.rotation)) * speed * dt;
+		auto rb = getComponent<parabellum::RigidBody>();
+		if (rb) rb->velocity = force;
+		//velocity = force;
 
-	Actor::Update(dt);
-	*/
-}
+		//if i had the wrap command working, id put it here
+		m_transform.position.x = parabellum::math::Wrap(m_transform.position.x, 0.0f, 1280.0f);
+		m_transform.position.y = parabellum::math::Wrap(m_transform.position.y, 0.0f, 1024.0f);
 
-void Bullet::onCollision(parabellum::Actor* other)
-{
-	if (owner->tag != other->tag) {
-		owner->stillAlive = false;
-		//m_scene->getGame()->addPoints(200);
+		Actor::Update(dt);
+		*/
+	}
+
+	void Bullet::Read(const json::value_t& value)
+	{
+		Object::Read(value);
+		JSON_READ(value, speed);
+		JSON_READ(value, rotationRate);
+	}
+
+	void Bullet::onCollision(parabellum::Actor* other)
+	{
+		if (owner->tag != other->tag) {
+			owner->stillAlive = false;
+			//m_scene->getGame()->addPoints(200);
+
+		}
 
 	}
-	
 }

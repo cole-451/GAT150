@@ -17,4 +17,9 @@ namespace parabellum {
 		}
 	}
 
+	void AudioSource::Read(const json::value_t& value)
+	{
+		JSON_READ(value, clipName);
+	}
+
 }

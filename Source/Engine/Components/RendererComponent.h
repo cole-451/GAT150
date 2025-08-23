@@ -5,5 +5,6 @@ namespace parabellum {
 	class RendererComponent : public Component {
 	public:
 		virtual void draw(class Renderer& renderer) = 0;
+		
 	};
 }

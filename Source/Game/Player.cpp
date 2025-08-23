@@ -15,7 +15,7 @@ FACTORY_REGISTER(Player)
 
 void Player::Update(float dt)
 {
-	/*
+
 
 	float rotate = 0;
 	float thrust = 0;
@@ -50,7 +50,7 @@ void Player::Update(float dt)
 
 
 
-
+	/*
 	//check button to fire bullet!
 
 	if (parabellum::getEngine().getInputSys().GetMouseButtonPressed(InputSystem::MouseButton::MOUSE_LEFT)) {
@@ -109,4 +109,14 @@ void Player::onCollision(parabellum::Actor* other)
 		//getEngine().GTFO();
 		//exit(1);
 	}
+}
+
+void Player::Read(const json::value_t& value)
+{
+	Object::Read(value); //reads in name and if its active
+
+	JSON_READ(value, speed);
+	JSON_READ(value, rotationRate);
+
+
 }

@@ -34,6 +34,10 @@ namespace parabellum {
 			//m_scene{scene}
 		{
 		}
+		//virtual std::unique_ptr<Object> Clone() { return std::make_unique<Actor>(*this); }
+
+		Actor(const Actor& other);
+		CLASS_PROTOTYPE(Actor)
 
 		virtual void Update(float dt);
 
@@ -54,6 +58,8 @@ namespace parabellum {
 
 
 		Transform m_transform;
+		bool persistent = false;
+
 		//std::shared_ptr<Model> m_model;
 		Scene* m_scene{ nullptr };
 

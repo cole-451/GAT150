@@ -26,4 +26,8 @@ bool CircleCollide2D::checkCollision(ColliderComponent& other)
     
     return false;
 }
+void CircleCollide2D::Read(const json::value_t& value)
+{
+    JSON_READ(value, radius);
+}
 }

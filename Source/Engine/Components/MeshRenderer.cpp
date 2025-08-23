@@ -16,4 +16,9 @@ namespace parabellum {
 		}
 	}
 
+	void MeshRenderer::Read(const json::value_t& value)
+	{
+		JSON_READ(value, meshName);
+	}
+
 }

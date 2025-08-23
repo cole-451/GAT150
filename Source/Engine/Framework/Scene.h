@@ -30,6 +30,7 @@ namespace parabellum {
 
 		// Inherited via Serializable
 		void Read(const json::value_t& value) override;
+		void RemoveAllActors(bool force = false);
 
 
 	private:

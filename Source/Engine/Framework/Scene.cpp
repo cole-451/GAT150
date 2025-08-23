@@ -61,6 +61,18 @@ namespace parabellum {
 	void Scene::Read(const json::value_t& value)
 	{
 		//read actor
+		if (JSON_HAS(value, prototypes)) {
+			//read prototypes
+			for (auto& actorValue : JSON_GET(value, prototypes).GetArray()) {
+				auto actor = Factory::Instance().Create<Actor>("Actor");
+				actor->Read(actorValue);
+
+				std::string name = actor->name;
+				Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
+			}
+		}
+
+		//read actual actors
 		if (JSON_HAS(value, actors)) {
 
 			for (auto& actorValue : JSON_GET(value, actors).GetArray()) {
@@ -72,11 +84,23 @@ namespace parabellum {
 		}
 	}
 
+	void Scene::RemoveAllActors(bool force)
+	{
+		for (auto iter = actors.begin(); iter != actors.end();) {
+			if (!(*iter)->persistent || force) {
+				iter = actors.erase(iter);
+			}
+			else {
+				iter++;
+			}
+		}
 
 
 
 
 
-	// check for collisions
 
+		// check for collisions
+
+	}
 }

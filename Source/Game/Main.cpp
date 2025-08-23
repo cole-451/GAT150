@@ -14,6 +14,11 @@ int main(int argc, char* argv[]) {
     parabellum::File::SetCurrentDirectory("Assets");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
+    //testing...
+
+
+
+
 
     auto spriterenderer = Factory::Instance().Create("MeshRenderer");
     spriterenderer->name = "kevin";

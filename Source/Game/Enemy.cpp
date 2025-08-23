@@ -28,6 +28,12 @@ void Enemy::Update(float dt)
 	*/
 }
 
+void Enemy::Read(const json::value_t& value)
+{
+	Object::Read(value);
+	JSON_READ(value, speed);
+}
+
 void Enemy::onCollision(parabellum::Actor* other)
 {
 	if (owner->tag != other->tag) {

@@ -11,7 +11,11 @@ namespace parabellum {
 
 		void draw(Renderer& renderer) override;
 
+		CLASS_PROTOTYPE(MeshRenderer)
+
 	public:
 		std::string meshName;
+		void Read(const json::value_t& value) override;
+
 	};
 }

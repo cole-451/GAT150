@@ -9,10 +9,12 @@ namespace parabellum{
 class Enemy : public Component {
 public:
 
+	CLASS_PROTOTYPE(Enemy)
 	float speed = 200;
 	Enemy() = default;
 
 	void Update(float dt) override;
+	void Read(const json::value_t& value) override;
 private:
 
 
@@ -20,6 +22,7 @@ private:
 
 	// Inherited via Actor
 	void onCollision(class parabellum::Actor* other) ;
+
 
 };
 }

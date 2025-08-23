@@ -1,6 +1,7 @@
 #pragma once
 #include "Singleton.h"
 #include "Framework/Object.h"
+#include "Framework/Actor.h"
 #include "StringHelper.h"
 #include "Logger.h"
 #include <map>
@@ -25,8 +26,6 @@ namespace parabellum {
 
 	template <typename T>
 		requires std::derived_from<T, Object>
-
-
 	class Creator : public CreatorBase {
 	public:
 		std::unique_ptr<Object> Create() override {
@@ -34,8 +33,32 @@ namespace parabellum {
 		}
 	};
 
+	template <typename T>
+		requires std::derived_from<T, Object>
+	class PrototypeCreator : public CreatorBase {
+	public:
+		PrototypeCreator(std::unique_ptr<T> prototype):
+			m_prototype{ std::move(prototype) }
+		{ 
+		}
+		 // something wrong here...
+
+		std::unique_ptr<Object> Create() override {
+			return m_prototype->Clone();
+		}
+
+	private:
+		std::unique_ptr<T> m_prototype;
+	};
+
+
+
 	class Factory :public Singleton<Factory> {
 	public:
+		template <typename T>
+			requires std::derived_from<T, Object>
+		void RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype);
+
 		template <typename T>
 			requires std::derived_from<T, Object>
 		void Register(const std::string& name);
@@ -58,6 +81,7 @@ namespace parabellum {
 		Logger::Info("{} added to factory.", name);
 
 	}
+
 	template<typename T>
 		requires std::derived_from<T, Object>
 	inline std::unique_ptr<T> Factory::Create(const std::string& name)
@@ -78,6 +102,41 @@ namespace parabellum {
 		else {
 			Logger::Error("Could not create factory object : {}", name);
 		}
-		return std::unique_ptr<T>();
+		return nullptr;
+	}
+
+	template<typename T>
+		requires std::derived_from<T, Object>
+	inline void Factory::RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype)
+	{
+		std::string key = toLower(name);
+		//add creator to registry
+		m_registry[key] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
+		Logger::Info("{} added to factory.", name);
+
+	} // where do I go?
+
+
+
+	template<typename T = Actor>
+		requires std::derived_from<T, Actor>
+	std::unique_ptr<T> Instantiate(const std::string& name) {
+		return Factory::Instance().Create<Actor>(name);
+	}
+
+	template<typename T = Actor>
+		requires std::derived_from<T, Actor>
+	std::unique_ptr<T> Instantiate(const std::string& name, const vec2& position, float rotation, float scale) {
+		auto instance = Factory::Instance().Create<Actor>(name);
+		instance->m_transform = Transform{ position, rotation, scale };
+		return instance;
+	}
+
+	template<typename T = Actor>
+		requires std::derived_from<T, Actor>
+	std::unique_ptr<T> Instantiate(const std::string& name, const Transform& transform) {
+		auto instance = Factory::Instance().Create<Actor>(name);
+		instance->m_transform = transform;
+		return instance;
 	}
 }
