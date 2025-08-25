@@ -12,7 +12,7 @@
       "components": [
         {
           "type": "Player",
-          "speed": 500,
+          "speed": 500.0,
           "rotationRate": 2000
         },
         {
@@ -41,8 +41,8 @@
       },
       "components": [
         {
-          "type": "Enemy",
-          "speed": 500,
+          "type": "enemy",
+          "speed": 500.0,
           "rotationRate": 2000
         },
         {
@@ -71,7 +71,7 @@
       },
       "components": [
         {
-          "type": "Bullet",
+          "type": "bullet",
           "speed": 500,
           "rotationRate": 2000
         },

@@ -40,7 +40,6 @@ int main(int argc, char* argv[]) {
     //create vidya game
     std::unique_ptr<SpaceGame> spacegame = std::make_unique<SpaceGame>();
     
-     spacegame->initialize(); 
 
 
 
@@ -72,8 +71,6 @@ int main(int argc, char* argv[]) {
 
 
     getEngine().getAudioSys().playSound("bass");
-    auto texture = parabellum::Resources().Get<parabellum::Texture>("the_legend.jpg", getEngine().getRenderer());
-
 
     //MAIN LOOP
     while (!quit) {
