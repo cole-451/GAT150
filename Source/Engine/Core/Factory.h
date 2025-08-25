@@ -84,12 +84,14 @@ namespace parabellum {
 
 	template<typename T>
 		requires std::derived_from<T, Object>
+
 	inline std::unique_ptr<T> Factory::Create(const std::string& name)
 	{
 		std::string key = toLower(name);
 		//look for creator in registry
 		auto it = m_registry.find(key);
-		if (it != m_registry.end()) {
+
+		if (it != m_registry.end()) { // if its NOT null
 
 			auto object = it->second->Create();
 			T* derived = dynamic_cast<T*>(object.get());
@@ -97,7 +99,7 @@ namespace parabellum {
 				object.release();
 				return std::unique_ptr<T>(derived);
 			}
-			Logger::Error("Mismatching factory object type : {}", name);
+			//Logger::Error("Mismatching factory object type : {}", name);
 		}
 		else {
 			Logger::Error("Could not create factory object : {}", name);
@@ -121,7 +123,8 @@ namespace parabellum {
 	template<typename T = Actor>
 		requires std::derived_from<T, Actor>
 	std::unique_ptr<T> Instantiate(const std::string& name) {
-		return Factory::Instance().Create<Actor>(name);
+		auto instance = Factory::Instance().Create<Actor>(name);
+		return instance;
 	}
 
 	template<typename T = Actor>

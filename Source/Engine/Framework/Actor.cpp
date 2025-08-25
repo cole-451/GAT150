@@ -91,6 +91,7 @@ namespace parabellum {
 				std::string type;
 				JSON_READ(componentValue, type);
 				auto component = Factory::Instance().Create<Component>(type);
+
 				if (!component) { // if there's no component, shoot out an error
 					Logger::Error("Could not create pointer for component {}", type);
 					return;

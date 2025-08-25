@@ -60,7 +60,6 @@ namespace parabellum {
 
 	void Scene::Read(const json::value_t& value)
 	{
-		//read actor
 		if (JSON_HAS(value, prototypes)) {
 			//read prototypes
 			for (auto& actorValue : JSON_GET(value, prototypes).GetArray()) {

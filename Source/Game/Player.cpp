@@ -50,10 +50,15 @@ void Player::Update(float dt)
 
 
 
-	/*
 	//check button to fire bullet!
 
+
 	if (parabellum::getEngine().getInputSys().GetMouseButtonPressed(InputSystem::MouseButton::MOUSE_LEFT)) {
+		auto bullet = Instantiate("bullet");
+
+		owner->m_scene->AddActor(std::move(bullet));
+	}
+	/*
 		getEngine().getAudioSys().playSound("shoot");
 
 		getEngine().getAudioSys().playSound(*Resources().Get<AudioClip>(("bass.wav"), getEngine().getAudioSys()).get());

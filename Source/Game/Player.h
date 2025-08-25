@@ -8,8 +8,8 @@ using namespace parabellum;
 
 class Player : public parabellum::Component {
 public:
+	CLASS_PROTOTYPE(Player) // clones an object of the player. Macro is in Object.h
 	Player() = default;
-	CLASS_PROTOTYPE(Player)
 
 
 

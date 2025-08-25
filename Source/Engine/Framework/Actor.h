@@ -34,9 +34,10 @@ namespace parabellum {
 			//m_scene{scene}
 		{
 		}
-		//virtual std::unique_ptr<Object> Clone() { return std::make_unique<Actor>(*this); }
 
 		Actor(const Actor& other);
+		//virtual std::unique_ptr<Object> Clone() { return std::make_unique<Actor>(*this); } already being cloned below.
+
 		CLASS_PROTOTYPE(Actor)
 
 		virtual void Update(float dt);

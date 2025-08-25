@@ -117,10 +117,13 @@ void parabellum::SpaceGame::onPlayerDead()
 
 void parabellum::SpaceGame::spawnEnemy() // use Instantiate here later
 {
-	/*
-	Actor* player = m_scene->GetActorByName("player");
+	Actor* player = m_scene->GetActorByName<Actor>("player");
 	if (player) {
 		Transform transform{ vec2{ parabellum::random::getReal(1280.0f), parabellum::random::getReal(1024.0f)  }, 0, 5.0f };
+		auto enemy = Instantiate("enemy", transform);
+		m_scene->AddActor(std::move(enemy));
+	}
+	/*
 
 		//auto model = Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer());
 		std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform);
@@ -149,6 +152,10 @@ void parabellum::SpaceGame::spawnEnemy() // use Instantiate here later
 	*/
 }
 void::parabellum::SpaceGame::spawnPlayer() { // use Instantiate here later
+
+	auto player = Instantiate("player");
+
+	m_scene->AddActor(std::move(player));
 	/*
 	player->name = "Player";
 	player->tag = "player";
@@ -174,5 +181,5 @@ void::parabellum::SpaceGame::spawnPlayer() { // use Instantiate here later
 
 	m_scene->AddActor(std::move(player));
 	*/
-	
+
 }
