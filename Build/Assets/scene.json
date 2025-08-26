@@ -72,7 +72,7 @@
       "components": [
         {
           "type": "bullet",
-          "speed": 500,
+          "speed": 9999999,
           "rotationRate": 2000
         },
         {
@@ -140,11 +140,8 @@
         }
 
       ]
-    },
-    {
-      "name": "bullet",
-      "tag": "bullet"
     }
+
 
   ]
 

@@ -5,7 +5,7 @@
 
 namespace parabellum {
 
-class Bullet : public parabellum::Component {
+class Bullet : public parabellum::Component, public ICollidable {
 public:
 
 	CLASS_PROTOTYPE(Bullet)
@@ -20,10 +20,11 @@ public:
 
 	void Update(float dt) override;
 	void Read(const json::value_t& value) override;
+	RigidBody* m_rb{ nullptr };
 
 private:
 
 	// Inherited via Actor
-	void onCollision(parabellum::Actor* other);
+	void OnCollision(Actor* other) override;
 };
 }

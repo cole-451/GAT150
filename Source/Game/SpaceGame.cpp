@@ -21,12 +21,8 @@ bool SpaceGame::initialize()
 
 
 	m_scene = std::make_unique<Scene>(this);
-
-	json::document_t document;
-
-	json::Load("scene.json", document);
-
-	m_scene->Read(document);
+	m_scene->Load("scene.json");
+	
 	//declare and create actor list
 	std::vector<std::unique_ptr<Actor>> actors;
 

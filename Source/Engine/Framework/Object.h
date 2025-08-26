@@ -6,7 +6,7 @@
 
 
 namespace parabellum {
-	class Object : public Serializable {
+	class Object : public ISerializable {
 	public:
 		std::string name;
 		bool active{ true };

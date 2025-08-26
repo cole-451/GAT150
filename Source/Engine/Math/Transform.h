@@ -4,7 +4,7 @@
 
 namespace parabellum {
 
-struct Transform : public parabellum::Serializable {
+struct Transform : public parabellum::ISerializable {
 	vec2 position;
 	float rotation;
 	float scale;

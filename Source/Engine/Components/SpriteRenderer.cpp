@@ -1,11 +1,17 @@
 #include "EnginePCH.h"
 #include "SpriteRenderer.h"
 #include "Renderer/Renderer.h"
+#include "Engine.h"
 
 namespace parabellum {
 
 	FACTORY_REGISTER(SpriteRenderer);
-void SpriteRenderer::Update(float dt)
+	void SpriteRenderer::Start()
+	{
+		texture = Resources().Get<Texture>(textureName, getEngine().getRenderer());
+
+	}
+	void SpriteRenderer::Update(float dt)
 {
 	//
 }

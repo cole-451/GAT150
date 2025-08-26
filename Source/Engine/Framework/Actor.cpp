@@ -65,6 +65,14 @@ namespace parabellum {
 	/// 
 
 
+	void Actor::OnCollision(Actor* other)
+	{
+		auto collidables = getComponents<ICollidable>();
+		for (auto& collideable : collidables) {
+			collideable->OnCollision(other);
+		}
+	}
+
 	void parabellum::Actor::addComponent(std::unique_ptr<Component> component)
 	{
 		component->owner = this;
@@ -102,6 +110,23 @@ namespace parabellum {
 			}
 		}
 
+	}
+	void Actor::Start()
+	{
+		for (auto& component : m_components) {
+			if (component->active) {
+				component->Start();
+			}
+		}
+
+	}
+	void Actor::Destroyed()
+	{
+		for (auto& component : m_components) {
+			if (component->active) {
+				component->Destroyed();
+			}
+		}
 	}
 }
 

@@ -15,6 +15,10 @@ namespace parabellum {
 		}
 
 		//remove destroyed actors
+		std::erase_if(actors, [](auto& actor) {
+			return (!actor->stillAlive);
+		});
+
 		for (auto iter = actors.begin(); iter != actors.end();) {
 			if (!(*iter)->stillAlive) {
 				iter = actors.erase(iter);
@@ -35,8 +39,8 @@ namespace parabellum {
 				if (!colliderA || !colliderB) continue;
 
 				if (colliderA->checkCollision(*colliderB)) {
-					actorA->onCollision(actorB.get());
-					actorB->onCollision(actorA.get());
+					actorA->OnCollision(actorB.get());
+					actorB->OnCollision(actorA.get());
 
 				}
 			}
@@ -51,9 +55,12 @@ namespace parabellum {
 			}
 		}
 	}
-	void Scene::AddActor(std::unique_ptr<Actor> actor)
+	void Scene::AddActor(std::unique_ptr<Actor> actor, bool start)
 	{
 		actor->m_scene = this; // check on this later. im not sure if this is correct.
+		if (start) {
+		actor->Start();
+		}
 		actors.push_back(std::move(actor));
 
 	}
@@ -78,7 +85,7 @@ namespace parabellum {
 				auto actor = Factory::Instance().Create<Actor>("Actor");
 				actor->Read(actorValue);
 
-				AddActor(std::move(actor));
+				AddActor(std::move(actor), false);
 			}
 		}
 	}
@@ -101,5 +108,23 @@ namespace parabellum {
 
 		// check for collisions
 
+	}
+	bool Scene::Load(const std::string& sceneName)
+	{
+		//load json and create scene
+		json::document_t document;
+
+		if (!json::Load(sceneName, document)) {
+			return false;
+		}
+
+		Read(document);
+
+
+		//start actors
+		for (auto& actor : actors) {
+			actor->Start();
+		}
+		return true;
 	}
 }

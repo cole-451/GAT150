@@ -10,6 +10,7 @@
 #include "../Framework/Scene.h"
 #include "../Framework/Game.h"
 #include "Renderer/Texture.h"
+#include "Physics/Collidable.h"
 
 namespace parabellum {
 
@@ -17,7 +18,7 @@ namespace parabellum {
 
 	class Scene;
 
-	class Actor : public Object {
+	class Actor : public Object, public ICollidable {
 	public:
 
 		std::string tag;
@@ -46,7 +47,7 @@ namespace parabellum {
 
 		Transform& GetTransform() { return m_transform; }
 
-		virtual void onCollision(Actor* other) {}
+		virtual void OnCollision(Actor* other) override;
 
 		void addComponent(std::unique_ptr<Component> component);
 
@@ -67,11 +68,16 @@ namespace parabellum {
 		std::vector<std::unique_ptr<Component>> m_components;
 		// Inherited via Serializable
 		void Read(const json::value_t& value) override;
+
+		virtual void Start();
+
+		virtual void Destroyed();
 	protected:
 
 
 
 	};
+
 	template<typename T>
 	inline T* Actor::getComponent()
 	{
@@ -94,7 +100,7 @@ namespace parabellum {
 				results.push_back(result);
 			}
 
-			return results; // fix this up! ask for the video early.
 		}
+			return results; // does this go here or back in the for loop?
 	}
 }

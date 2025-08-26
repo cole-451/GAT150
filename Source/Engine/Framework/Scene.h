@@ -7,7 +7,7 @@
 #include "Core/Serializable.h"
 
 namespace parabellum {
-	class Scene : public Serializable {
+	class Scene : public ISerializable {
 	public:
 		Scene(class Game* game) :
 			m_game{game}{ }
@@ -17,7 +17,7 @@ namespace parabellum {
 
 		void Draw(class Renderer& renderer);
 
-		void AddActor(std::unique_ptr<class Actor> actor);
+		void AddActor(std::unique_ptr<class Actor> actor, bool start = true);
 
 		template <typename T>
 
@@ -32,6 +32,10 @@ namespace parabellum {
 		void Read(const json::value_t& value) override;
 		void RemoveAllActors(bool force = false);
 
+		bool Load(const std::string& sceneName);
+
+
+
 
 	private:
 		
@@ -39,7 +43,7 @@ namespace parabellum {
 
 		
 		std::list<std::unique_ptr<Actor>> actors; //list is having a lot of trouble.
-
+		// perhaps actors?
 
 
 	};

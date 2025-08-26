@@ -54,9 +54,12 @@ void Player::Update(float dt)
 
 
 	if (parabellum::getEngine().getInputSys().GetMouseButtonPressed(InputSystem::MouseButton::MOUSE_LEFT)) {
-		auto bullet = Instantiate("bullet");
+		Transform tf(this->owner->m_transform.position, this->owner->m_transform.rotation, 2.0f);
+		auto bullet = Instantiate("bullet", tf);
 
 		owner->m_scene->AddActor(std::move(bullet));
+
+		//owner->m_scene->GetActorByName("bullet")->Update(dt); // absolute guess on how to get this working.
 	}
 	/*
 		getEngine().getAudioSys().playSound("shoot");
@@ -68,7 +71,6 @@ void Player::Update(float dt)
 
 		//TODO: replace textures with calls to add resources
 
-		Transform tf(this->owner->m_transform.position, this->owner->m_transform.rotation, 2.0f);
 		auto bullet = std::make_unique<Actor>(tf);
 		bullet->name = "Bullet";
 		bullet->tag = "player";
@@ -101,7 +103,7 @@ void Player::Update(float dt)
 	*/
 }
 
-void Player::onCollision(parabellum::Actor* other)
+void Player::OnCollision(parabellum::Actor* other)
 {
 	if (owner->tag != other->tag) {
 		/*if (m_scene->getGame()->getLives() > 0) {

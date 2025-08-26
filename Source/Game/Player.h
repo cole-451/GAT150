@@ -6,7 +6,7 @@
 using namespace parabellum;
 
 
-class Player : public parabellum::Component {
+class Player : public parabellum::Component, public ICollidable {
 public:
 	CLASS_PROTOTYPE(Player) // clones an object of the player. Macro is in Object.h
 	Player() = default;
@@ -16,12 +16,14 @@ public:
 	void Update(float dt) override;
 	float speed{ 0 };
 	float rotationRate{ 0 };
+	RigidBody* m_rb;
+
 private:
 
 
 
 	// Inherited via Actor
-	void onCollision(class parabellum::Actor* other);
+	void OnCollision(class parabellum::Actor* other) override;
 
 	void Read(const json::value_t& value) override;
 

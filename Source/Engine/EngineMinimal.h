@@ -10,6 +10,14 @@
 #include "Core/Time.h"
 #include "Core/json.h"
 
+//physics
+#include "Physics/Collidable.h"
+
+//event shit
+#include "Event/Event.h"
+#include "Event/EventManager.h"
+#include "Event/Observer.h"
+
 //framework
 #include "Framework/Object.h"
 #include "Framework/Actor.h"

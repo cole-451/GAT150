@@ -10,10 +10,10 @@ namespace parabellum {
 
 	void Bullet::Update(float dt)
 	{
+		vec2 force = vec2{ 1,0 }.Rotate(math::degrees_to_radius(owner->m_transform.rotation)) * speed * dt;
+		auto rb = owner->getComponent<parabellum::RigidBody>();
+		if (rb) { rb->velocity = force; }
 		/*
-		vec2 force = vec2{ 1,0 }.Rotate(math::degrees_to_radius(m_transform.rotation)) * speed * dt;
-		auto rb = getComponent<parabellum::RigidBody>();
-		if (rb) rb->velocity = force;
 		//velocity = force;
 
 		//if i had the wrap command working, id put it here
@@ -31,7 +31,7 @@ namespace parabellum {
 		JSON_READ(value, rotationRate);
 	}
 
-	void Bullet::onCollision(parabellum::Actor* other)
+	void Bullet::OnCollision(parabellum::Actor* other)
 	{
 		if (owner->tag != other->tag) {
 			owner->stillAlive = false;

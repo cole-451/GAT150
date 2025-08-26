@@ -33,6 +33,12 @@
     <Filter Include="Source\Components">
       <UniqueIdentifier>{9ba892fb-7bf2-4c06-b02d-8a504eed1678}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Physics">
+      <UniqueIdentifier>{7dcaddde-4c45-495f-9d43-fc246cc2b49a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Event">
+      <UniqueIdentifier>{71d88463-cb8d-4ef0-8fdb-5386e0e915c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -106,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="Math\Transform.cpp">
       <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Physics.cpp">
+      <Filter>Source\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\EventManager.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +237,21 @@
     </ClInclude>
     <ClInclude Include="Core\Serializable.h">
       <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collidable.h">
+      <Filter>Source\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Physics.h">
+      <Filter>Source\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Observer.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\EventManager.h">
+      <Filter>Source\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,9 +6,12 @@
 namespace parabellum {
 
 FACTORY_REGISTER(Enemy)
+void Enemy::Start()
+{
+	m_rb = owner->getComponent<RigidBody>();
+}
 void Enemy::Update(float dt)
 {
-	/*
 	Actor* player = owner->m_scene->GetActorByName("player");
 	if (player) {
 	vec2 direction{ 0,0 };
@@ -17,6 +20,7 @@ void Enemy::Update(float dt)
 	owner->m_transform.rotation = parabellum::math::radius_to_degrees(direction.Angle());
 
 	}
+	/*
 	vec2 force = vec2{ 1,0 }.Rotate(parabellum::math::degrees_to_radius(owner->m_transform.rotation)) * dt;
 	//velocity = force;
 	owner->getComponent<parabellum::RigidBody>()->velocity += force * dt;
@@ -34,7 +38,7 @@ void Enemy::Read(const json::value_t& value)
 	JSON_READ(value, speed);
 }
 
-void Enemy::onCollision(parabellum::Actor* other)
+void Enemy::OnCollision(parabellum::Actor* other)
 {
 	if (owner->tag != other->tag) {
 		owner->stillAlive = false;
