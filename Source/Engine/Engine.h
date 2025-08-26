@@ -6,6 +6,7 @@
 #include "Renderer/ParticleSystem.h"
 #include "Core/Singleton.h"
 #include "Resources/ResourceManager.h"
+#include "Physics/Physics.h"
 
 #include <memory>
 
@@ -39,6 +40,8 @@ namespace parabellum {
 			return *m_ps;
 		}
 
+		Physics& GetPhysics() { return *m_physics; }
+
 	private:
 		friend class Singleton<Engine>;
 		Engine() = default;
@@ -52,6 +55,8 @@ namespace parabellum {
 		std::unique_ptr<audiosys> m_audio;
 
 		std::unique_ptr<ParticleSystem> m_ps;
+
+		std::unique_ptr<Physics> m_physics;
 
 
 		
