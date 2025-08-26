@@ -9,6 +9,10 @@ using namespace parabellum;
 bool SpaceGame::initialize()
 {
 
+	OBSERVER_ADD("player_dead");
+	OBSERVER_ADD("add_points");
+	//EventManager::Instance().AddObserver("player_dead", *this);
+	//EventManager::Instance().AddObserver("add_points", *this);
 
 
 	m_scoreFont = std::make_shared<Font>();
@@ -111,6 +115,16 @@ void parabellum::SpaceGame::onPlayerDead()
 		current_state = GameState::HesRottingYouKnow;
 		// you can press R to restart. afterwards the game closes
 	}
+}
+void parabellum::SpaceGame::OnNotify(const Event& event)
+{
+	if (equalsIgnoreCase(event.id, "player_dead")) {
+		onPlayerDead();
+	}
+	else if (equalsIgnoreCase(event.id, "add_points")) {
+		addPoints(std::get<int>(event.data));
+	}
+	std::cout << event.id << std::endl;
 }
 
 void parabellum::SpaceGame::spawnEnemy() // use Instantiate here later

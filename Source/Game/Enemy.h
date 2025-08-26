@@ -6,7 +6,7 @@
 
 
 namespace parabellum{
-class Enemy : public Component, public ICollidable {
+class Enemy : public Component, public ICollidable, public IObserver {
 public:
 
 	CLASS_PROTOTYPE(Enemy)
@@ -26,6 +26,10 @@ private:
 	// Inherited via Actor
 	void OnCollision(class Actor* other) override ;
 
+
+
+	// Inherited via IObserver
+	void OnNotify(const Event& event) override;
 
 };
 }

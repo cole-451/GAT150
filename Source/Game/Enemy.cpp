@@ -8,6 +8,9 @@ namespace parabellum {
 FACTORY_REGISTER(Enemy)
 void Enemy::Start()
 {
+	//EventManager::Instance().AddObserver("player_dead", *this);
+	OBSERVER_ADD(player_dead);
+
 	m_rb = owner->getComponent<RigidBody>();
 }
 void Enemy::Update(float dt)
@@ -42,7 +45,14 @@ void Enemy::OnCollision(parabellum::Actor* other)
 {
 	if (owner->tag != other->tag) {
 		owner->stillAlive = false;
-		owner->m_scene->getGame()->addPoints(100);
+		EVENT_NOTIFY_DATA(add_points, 100);
+		//EventManager::Instance().Notify({ "add_points", 100 });
+
+		//owner->m_scene->getGame()->addPoints(100);
+
+
+
+
 		parabellum::Particle particle;
 
 		particle.position = owner->m_transform.position;
@@ -54,6 +64,12 @@ void Enemy::OnCollision(parabellum::Actor* other)
 
 		parabellum::getEngine().getPS().addParticle(particle);
 
+	}
+}
+void Enemy::OnNotify(const Event& event)
+{
+	if (equalsIgnoreCase(event.id, "player_dead")) {
+		owner->stillAlive = false;
 	}
 }
 }

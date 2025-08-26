@@ -106,11 +106,9 @@ void Player::Update(float dt)
 void Player::OnCollision(parabellum::Actor* other)
 {
 	if (owner->tag != other->tag) {
-		/*if (m_scene->getGame()->getLives() > 0) {
-			m_scene->getGame()->setLives(m_scene->getGame()->getLives() - 1);
-			return;
-		}*/
 		owner->stillAlive = false;
+		EVENT_NOTIFY(player_dead);
+		//EventManager::Instance().Notify(Event{ "player_dead", true });
 
 		dynamic_cast<SpaceGame*>(owner->m_scene->getGame())->onPlayerDead();
 		//getEngine().GTFO();

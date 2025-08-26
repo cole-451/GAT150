@@ -8,7 +8,7 @@
 
 namespace parabellum{
 
-class SpaceGame : public parabellum::Game {
+class SpaceGame : public parabellum::Game, public IObserver {
 public:
 	enum class GameState {
 		Initialize,
@@ -53,6 +53,10 @@ private:
 	std::unique_ptr<Text> titleText;
 
 	std::unique_ptr<Text> scoreText;
+
+
+	// Inherited via IObserver
+	void OnNotify(const Event& event) override;
 
 };
 }

@@ -26,6 +26,8 @@ bool Engine::initialize() {
 
 void Engine::GTFO() {
 	Resources().Clear();
+	Factory::Instance().FuckAllOfYou();
+	EventManager::Instance().RemoveAll();
 	m_audio->GTFO();
 	m_inputsys->GTFO();
 	m_renderer->GTFO();
