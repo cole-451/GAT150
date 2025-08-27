@@ -12,6 +12,8 @@
 
 //physics
 #include "Physics/Collidable.h"
+#include "Physics/Physics.h"
+#include "Physics/PhysicsBody.h"
 
 //event shit
 #include "Event/Event.h"
