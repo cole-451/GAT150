@@ -71,6 +71,10 @@ namespace parabellum {
 	void RigidBody::ApplyTorque(float radians) {
 		m_physbod->ApplyTorque(radians);
 	}
+
+	void RigidBody::setVelocity(const vec2& velocity) {
+		m_physbod->setVelocity(velocity);
+	}
 }
 
 

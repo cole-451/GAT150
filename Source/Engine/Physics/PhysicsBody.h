@@ -40,6 +40,8 @@ namespace parabellum {
 		void ApplyForce(const vec2 force);
 		void ApplyTorque(float radians);
 
+		void setVelocity(const vec2& velocity);
+
 	private:
 		b2BodyId m_bodyID{ b2_nullBodyId };
 	};

@@ -13,6 +13,11 @@
 
 FACTORY_REGISTER(Player)
 
+void Player::Start()
+{
+	m_rb = owner->getComponent<RigidBody>();
+}
+
 void Player::Update(float dt)
 {
 
@@ -22,31 +27,28 @@ void Player::Update(float dt)
 
 	//rotate
 
-	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_A)) {
-		rotate += -1;
-	}
-	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_D)) {
-		rotate += 1;
-	}
 	vec2 mousepos = getEngine().getInputSys().getMousePos();
 	float angle = (mousepos - owner->m_transform.position).Angle();
+	m_rb->ApplyTorque(math::degrees_to_radius(angle)); //HELP!!!!
+
 	//use mouse position relative to the actual player's position
 	owner->m_transform.rotation = math::radius_to_degrees(angle); // supposed to track mouse position to rotate
-	//rotation works, but sprite is not updating
-	//std::cout << m_transform.rotation << std::endl;
-		//owner->m_transform.rotation += (rotate * rotationRate) * dt;
+
+
 
 	//thrust
 	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_W)) thrust = 1;
 	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_S)) thrust = -1;
 	vec2 direction{ 1,0 };
 	vec2 force = direction.Rotate(math::degrees_to_radius(owner->m_transform.rotation)) * thrust * speed;
+
+
 	// something wrong here, perhaps?
 	//velocity += force * dt;
-	auto rb = owner->getComponent<parabellum::RigidBody>();
-	if (rb) {
-		rb->velocity += force * dt;
-	}
+	//auto rb = owner->getComponent<parabellum::RigidBody>();
+	
+	m_rb->setVelocity(force);
+	
 
 
 

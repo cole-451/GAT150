@@ -38,7 +38,7 @@ namespace parabellum {
             SDL_Quit();
             return false;
         }
-
+        SDL_SetRenderVSync(renderer, 1);
         SDL_SetRenderLogicalPresentation(renderer, 1280, 1024, SDL_LOGICAL_PRESENTATION_LETTERBOX); //shooting is offset here.
         return true;
     }

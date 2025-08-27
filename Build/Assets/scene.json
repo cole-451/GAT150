@@ -21,7 +21,8 @@
         },
         {
           "type": "RigidBody",
-          "velocity": [ 0.0, 0.0 ]
+          
+          "gravityScale": 0
         },
         {
           "type": "CircleCollide2D",
@@ -42,7 +43,7 @@
       "components": [
         {
           "type": "enemy",
-          "speed": 500.0,
+          "speed": 0.0,
           "rotationRate": 2000
         },
         {
@@ -51,7 +52,7 @@
         },
         {
           "type": "RigidBody",
-          "velocity": [ 0.0, 0.0 ]
+          "gravityScale": 0
         },
         {
           "type": "CircleCollide2D",
@@ -81,7 +82,8 @@
         },
         {
           "type": "RigidBody",
-          "velocity": [ 0.0, 0.0 ]
+          "gravityScale": 0,
+          "isSensor": true
         },
         {
           "type": "CircleCollide2D",

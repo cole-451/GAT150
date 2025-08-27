@@ -72,4 +72,8 @@ namespace parabellum {
 	{
 		b2Body_ApplyTorque(m_bodyID, radians, true);
 	}
+	void PhysicsBody::setVelocity(const vec2& velocity)
+	{
+		b2Body_SetLinearVelocity(m_bodyID, to_b2(Physics::PixelToWorld(velocity)));
+	}
 }

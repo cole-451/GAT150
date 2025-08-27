@@ -12,7 +12,7 @@ public:
 	Player() = default;
 
 
-
+	void Start() override;
 	void Update(float dt) override;
 	float speed{ 0 };
 	float rotationRate{ 0 };

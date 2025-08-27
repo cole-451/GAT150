@@ -30,6 +30,7 @@ namespace parabellum {
 		//collision
 		for (auto& actorA : actors) {
 			for (auto& actorB : actors) {
+				continue; //NO MORE COLLISIONS FOR A MINUTE.
 				if (actorA == actorB || (!actorA->stillAlive || !actorB->stillAlive)) continue;
 				//if one is destroyed, dont do anything
 				auto colliderA = actorA->getComponent<ColliderComponent>();
