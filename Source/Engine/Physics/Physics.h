@@ -5,6 +5,8 @@
 namespace parabellum {
 	//watch the video tonight (8/26) to fix up certain box2D stuff.
 
+		inline b2Vec2 to_b2(const vec2& v) { return b2Vec2{ v.x,v.y }; }
+		inline vec2 to_vec2(const b2Vec2& v) { return vec2{ v.x,v.y }; }
 	class Physics {
 	public:
 		Physics() = default;
@@ -14,7 +16,18 @@ namespace parabellum {
 
 		void Update(float dt);
 
+
+
+		static void SetPixelsPerUnit(float ppu) { ms_PixelsPerUnit = ppu; }
+
+		static float ms_PixelsPerUnit;
+
+		static vec2 WorldToPixel(const vec2& world) { return world * ms_PixelsPerUnit; }
+
+		static vec2 PixelToWorld(const vec2& pixel) { return pixel / ms_PixelsPerUnit; }
 	private:
-		b2WorldId m_worldId;
+		friend class PhysicsBody;
+		b2WorldId m_worldID;
+
 	};
 }

@@ -22,6 +22,7 @@ bool Engine::initialize() {
 
 	m_physics = std::make_unique<Physics>();
 	m_physics->Initialize();
+	Physics::SetPixelsPerUnit(48.0f);
 
 	
 	return true;
