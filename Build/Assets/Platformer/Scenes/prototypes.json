@@ -1,0 +1,78 @@
+{
+  "prototypes": [
+    {
+      "name": "player",
+      "tag": "player",
+      "active": true,
+      "m_transform": {
+        "position": [ 645.0, 512.0 ],
+        "rotation": 0.0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "PlayerController",
+          "speed": 100.0,
+          "maxSpeed": 2000
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "Textures/box.png"
+        },
+        {
+          "type": "RigidBody",
+          "gravityScale": 0,
+          "constrainAngle": true,
+          "shape": "capsule",
+          "scale": [ 0.5, 0.5 ]
+        },
+        {
+          "type": "CircleCollide2D",
+          "radius": 60.0
+        }
+      ]
+    },
+    {
+      "name": "enemy",
+      "tag": "enemy",
+      "active": true,
+      "m_transform": {
+        "position": [ 750.0, 512.0 ],
+        "rotation": 0.0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "EnemyController",
+          "speed": 100.0,
+          "maxSpeed": 2000
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "Textures/crate02.png"
+        },
+        {
+          "type": "RigidBody",
+          "gravityScale": 0,
+          "constrainAngle": true,
+          "shape": "box",
+          "scale": [ 0.5, 0.5 ]
+        },
+        {
+          "type": "CircleCollide2D",
+          "radius": 60.0
+        }
+      ]
+    }
+
+   
+
+  ]
+
+
+
+
+
+
+
+}

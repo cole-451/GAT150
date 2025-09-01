@@ -10,6 +10,7 @@ namespace parabellum {
 
 		vec2 size{ 0,0 };
 		vec2 velocity{ 0,0 };
+		vec2 scale{ 1,1 };
 
 		// Inherited via Component
 		void Update(float dt) override;

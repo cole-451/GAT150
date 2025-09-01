@@ -34,14 +34,14 @@ namespace parabellum {
 
 		}
 
-		m_physbod = std::make_unique<PhysicsBody>(owner->m_transform, size, bodydef, getEngine().GetPhysics());
+		m_physbod = std::make_unique<PhysicsBody>(owner->m_transform, size * scale, bodydef, getEngine().GetPhysics());
 	}
 
 	void RigidBody::Read(const json::value_t& value)
 	{
 		//JSON_READ(value, velocity); //check and see if you need to do the special vec2 version
 		JSON_READ(value, size);
-		//JSON_READ(value, scale);
+		JSON_READ(value, scale);
 
 
 		JSON_READ_NAME(value, "gravityScale", bodydef.gravityScale);

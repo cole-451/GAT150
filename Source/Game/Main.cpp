@@ -5,13 +5,14 @@
 #include "GamePCH.h"
 #include "EnginePCH.h"
 #include "Engine.h"
+#include "Platformer/PlatformerGame.h"
 
 
 using namespace parabellum;
 
 
 int main(int argc, char* argv[]) {
-    parabellum::File::SetCurrentDirectory("Assets");
+    parabellum::File::SetCurrentDirectory("Assets/Platformer");
 
     std::cout << File::GetCurrentDirectory() << std::endl;
     //testing...
@@ -29,16 +30,16 @@ int main(int argc, char* argv[]) {
     
     //initialize sounds
 
-    getEngine().getAudioSys().addSound("bass.wav", "bass");
+   /* getEngine().getAudioSys().addSound("bass.wav", "bass");
     getEngine().getAudioSys().addSound("music.mp3", "music");
-    getEngine().getAudioSys().addSound("Boom8.wav", "shoot");
+    getEngine().getAudioSys().addSound("Boom8.wav", "shoot");*/
 
 
-    std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
+    std::unique_ptr<PlatformerGame> game = std::make_unique<PlatformerGame>();
 
 
     //create vidya game
-    std::unique_ptr<SpaceGame> spacegame = std::make_unique<SpaceGame>();
+   // std::unique_ptr<PlatformerGame> spacegame = std::make_unique<PlatformerGame>();
     
 
 
@@ -61,7 +62,7 @@ int main(int argc, char* argv[]) {
     SDL_Event e;
     bool quit = false;
 
-    spacegame->initialize();
+    game->initialize();
 
 
 
@@ -70,7 +71,7 @@ int main(int argc, char* argv[]) {
  
 
 
-    getEngine().getAudioSys().playSound("bass");
+   // getEngine().getAudioSys().playSound("bass");
 
     //MAIN LOOP
     while (!quit) {
@@ -104,15 +105,15 @@ int main(int argc, char* argv[]) {
         getEngine().getRenderer().clear(); // make the background black
        
        
-        spacegame->Update();
-        spacegame->Draw(getEngine().getRenderer());
+        game->Update();
+        game->Draw(getEngine().getRenderer());
 
         getEngine().getRenderer().present(); // Render the screen
     }
 
 
     
-    spacegame.release();
+    game.release();
     getEngine().GTFO();
     
     return 0;

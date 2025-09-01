@@ -11,6 +11,8 @@ bool SpaceGame::initialize()
 
 	OBSERVER_ADD("player_dead");
 	OBSERVER_ADD("add_points");
+	m_scene = std::make_unique<Scene>(this);
+	m_scene->Load("scene.json");
 	//EventManager::Instance().AddObserver("player_dead", *this);
 	//EventManager::Instance().AddObserver("add_points", *this);
 
@@ -24,8 +26,6 @@ bool SpaceGame::initialize()
 	scoreText->Create(getEngine().getRenderer(), "" + std::to_string(m_score), vec3{ 0,1,0 });
 
 
-	m_scene = std::make_unique<Scene>(this);
-	m_scene->Load("scene.json");
 	
 	//declare and create actor list
 	std::vector<std::unique_ptr<Actor>> actors;
@@ -85,6 +85,8 @@ void SpaceGame::Update()
 		// close game
 		break;
 	}
+
+	//m_scene->Update(getEngine().getTime().getDeltaTime());
 }
 
 void SpaceGame::GTFO()
