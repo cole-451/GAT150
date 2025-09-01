@@ -206,7 +206,6 @@ fmod_vc.lib;sdl3_ttf.lib;sdl3_image.lib;box2dd.lib;%(AdditionalDependencies)</Ad
     </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Platformer\EnemyController.cpp" />
-    <ClCompile Include="Platformer\EnemyController.h" />
     <ClCompile Include="Platformer\PlatformerGame.cpp" />
     <ClCompile Include="Platformer\PlayerController.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -222,6 +221,7 @@ fmod_vc.lib;sdl3_ttf.lib;sdl3_image.lib;box2dd.lib;%(AdditionalDependencies)</Ad
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GamePCH.h" />
+    <ClInclude Include="Platformer\EnemyController.h" />
     <ClInclude Include="Platformer\PlatformerGame.h" />
     <ClInclude Include="Platformer\PlayerController.h" />
     <ClInclude Include="Player.h" />

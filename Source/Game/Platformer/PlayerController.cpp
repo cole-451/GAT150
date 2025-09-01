@@ -2,6 +2,8 @@
 #include "EnginePCH.h"
 #include "PlayerController.h"
 
+namespace parabellum{
+
 FACTORY_REGISTER(PlayerController)
 
 void PlayerController::Start()
@@ -47,4 +49,5 @@ void PlayerController::Read(const json::value_t& value)
 	JSON_READ(value, maxSpeed);
 	JSON_READ(value, jump);
 
+}
 }

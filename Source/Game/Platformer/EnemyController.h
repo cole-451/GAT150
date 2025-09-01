@@ -1,13 +1,11 @@
 #pragma once 
-#include "../Game/GamePCH.h" // it cant find the PCH for some reason.
 // HELP!!!!!!!
 
 #include "Framework/Actor.h"
 #include "Renderer/Texture.h"
 
 
-using namespace parabellum;
-
+namespace parabellum {
 
 class EnemyController : public parabellum::Component, public ICollidable {
 public:
@@ -32,3 +30,4 @@ private:
 	void Read(const json::value_t& value) override;
 
 };
+}

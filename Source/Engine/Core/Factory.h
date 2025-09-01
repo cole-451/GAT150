@@ -11,7 +11,7 @@
 class Register##classname {\
 public:\
     Register##classname() {\
-        Factory::Instance().Register<classname>(#classname);\
+        parabellum::Factory::Instance().Register<classname>(#classname);\
     }\
 };\
 Register##classname register_instance;

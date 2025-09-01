@@ -4,8 +4,7 @@
 #include "Renderer/Texture.h"
 
 
-using namespace parabellum;
-
+namespace parabellum {
 
 class PlayerController : public parabellum::Component, public ICollidable {
 public:
@@ -30,3 +29,5 @@ private:
 	void Read(const json::value_t& value) override;
 
 };
+}
+

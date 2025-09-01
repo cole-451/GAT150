@@ -1,5 +1,7 @@
-#include "EnginePCH.h"
+#include "../Game/GamePCH.h"
 #include "EnemyController.h"
+
+namespace parabellum {
 
 void EnemyController::Start()
 {
@@ -31,4 +33,5 @@ void EnemyController::Read(const json::value_t& value)
 	JSON_READ(value, speed);
 	JSON_READ(value, maxSpeed);
 	JSON_READ(value, jump);
+}
 }
