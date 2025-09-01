@@ -3,6 +3,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
+#include "Math/Rect.h"
 
 namespace parabellum {
 	class Renderer
@@ -37,6 +38,8 @@ namespace parabellum {
 		friend class Texture;
 		void DrawTexture(Texture& texture, float x, float y);
 		void DrawTexture(Texture& texture, float x, float y, float angle, float scale = 1);
+
+		void DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale = 1.0f);
 
 
 

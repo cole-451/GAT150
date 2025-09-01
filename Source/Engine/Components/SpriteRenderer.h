@@ -19,6 +19,7 @@ namespace parabellum {
 	public:
 		std::string textureName;
 		res_t<Texture> texture;
+		rect textureRect;
 
 		// Inherited via Serializable
 		void Read(const json::value_t& value) override;
