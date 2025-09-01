@@ -16,8 +16,17 @@
           "maxSpeed": 2000
         },
         {
-          "type": "SpriteRenderer",
-          "textureName": "Textures/box.png"
+          "type": "SpriteRenderer" //,
+           //"textureName": "Textures/box.png"
+        },
+        {
+          "type": "Animator",
+          "animations": [
+            {
+              "name": "idle",
+              "texture_animation": "Animations/ghost_idle.json"
+            }
+          ]
         },
         {
           "type": "RigidBody",

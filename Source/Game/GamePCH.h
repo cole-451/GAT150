@@ -17,9 +17,11 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/Text.h"
 #include "Renderer/Texture.h"
+#include "Renderer/TextureAnimation.h"
 
 //components
 #include "Components/SpriteRenderer.h"
 #include "Components/RigidBody.h"
 #include "Components/CircleCollide2D.h"
 #include "Components/MeshRenderer.h"
+#include "Components/Animator.h"

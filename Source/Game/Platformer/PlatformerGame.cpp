@@ -58,7 +58,13 @@ namespace parabellum {
 
 	void PlatformerGame::spawnPlayer() {
 		auto player = Instantiate("player");
+		if (player) {
 		m_scene->AddActor(std::move(player));
+
+		}
+		else {
+			Logger::Error("Cannot spawn player!");
+		}
 	}
 
 	void PlatformerGame::spawnEnemy() {
