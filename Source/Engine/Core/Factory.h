@@ -97,7 +97,7 @@ namespace parabellum {
 
 			auto object = it->second->Create();
 			T* derived = dynamic_cast<T*>(object.get());
-			if (derived) {
+			if (derived) { // not passing through here
 				object.release();
 				return std::unique_ptr<T>(derived);
 			}

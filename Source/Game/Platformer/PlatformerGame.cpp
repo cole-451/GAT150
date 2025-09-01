@@ -1,5 +1,5 @@
 #include "PlatformerGame.h"
-
+#include "Engine.h"
 namespace parabellum {
 	bool PlatformerGame::initialize() {
 		
@@ -62,6 +62,7 @@ namespace parabellum {
 	}
 
 	void PlatformerGame::spawnEnemy() {
-
+		auto enemy = Instantiate("enemy");
+		m_scene->AddActor(std::move(enemy));
 	}
 }

@@ -3,9 +3,13 @@
 
 namespace parabellum {
 
+	FACTORY_REGISTER(EnemyController)
+
+
 void EnemyController::Start()
 {
 	m_rb = owner->getComponent<RigidBody>(); //returns a null object. fix por favor
+
 
 }
 

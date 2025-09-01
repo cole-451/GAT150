@@ -22,10 +22,10 @@ void PlayerController::Update(float dt)
 	//vec2 force = direction.Rotate(math::degrees_to_radius(owner->m_transform.rotation)) * thrust * speed;
 
 	if (thrust != 0) {
-		m_rb->ApplyForce(vec2{ 1,0 } * thrust * 1000);
+		m_rb->ApplyForce(vec2{ 1,0 } * thrust * 10000);
 	}
 	if (getEngine().getInputSys().getKeyPressed(SDL_SCANCODE_SPACE)) {
-		m_rb->ApplyForce(vec2{ 0,-1 } * 10000);
+		m_rb->ApplyForce(vec2{ 0,-1 } * 1000000);
 
 	}
 

@@ -24,7 +24,7 @@
       "name": "tree",
       "tag": "tree",
       "persistent": true,
-      "transform": {
+      "m_transform": {
         "position": [
           460,
           640
@@ -43,10 +43,10 @@
       "name": "floor",
       "tag": "ground",
       "persistent": true,
-      "transform": {
+      "m_transform": {
         "position": [
-          500,
-          500
+          600,
+          700
         ],
         "rotation": 0,
         "scale": 0.2
@@ -67,7 +67,7 @@
       "name":  "crate",
       "tag": "crate",
       "persistent": true,
-      "transform": {
+      "m_transform": {
         "position": [
           500,
           500
