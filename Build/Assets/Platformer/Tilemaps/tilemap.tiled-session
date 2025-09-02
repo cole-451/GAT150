@@ -1,0 +1,37 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "tilemap..json": {
+            "scale": 1.2686458333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.64529107480087,
+                "y": 319.6321537072009
+            }
+        },
+        "tilemap.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 240,
+                "y": 221.66666666666669
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Important Work/C++ Projects/GAT150/Build/Assets/Platformer/Tilemaps",
+    "last.imagePath": "C:/Important Work/C++ Projects/GAT150/Build/Assets/Platformer/Textures",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "tilemap.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}

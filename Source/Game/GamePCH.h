@@ -18,6 +18,7 @@
 #include "Renderer/Text.h"
 #include "Renderer/Texture.h"
 #include "Renderer/TextureAnimation.h"
+#include "Renderer/Tilemap.h"
 
 //components
 #include "Components/SpriteRenderer.h"
@@ -25,3 +26,4 @@
 #include "Components/CircleCollide2D.h"
 #include "Components/MeshRenderer.h"
 #include "Components/Animator.h"
+#include "Components/TilemapRenderer.h"

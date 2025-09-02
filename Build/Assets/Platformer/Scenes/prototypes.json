@@ -1,11 +1,14 @@
 {
   "prototypes": [
     {
-      "name": "player",
+      "name": "platformplayer",
       "tag": "player",
       "active": true,
       "m_transform": {
-        "position": [ 645.0, 512.0 ],
+        "position": [
+          645.0,
+          312.0
+        ],
         "rotation": 0.0,
         "scale": 3.0
       },
@@ -16,15 +19,14 @@
           "maxSpeed": 2000
         },
         {
-          "type": "SpriteRenderer" //,
-           //"textureName": "Textures/box.png"
+          "type": "SpriteRenderer"
         },
         {
           "type": "Animator",
           "animations": [
             {
               "name": "idle",
-              "texture_animation": "Animations/ghost_idle.json"
+              "texture_animation": "Animations/ghost-idle.json"
             }
           ]
         },
@@ -33,7 +35,14 @@
           "gravityScale": 1,
           "constrainAngle": true,
           "shape": "capsule",
-          "scale": [ 0.5, 0.5 ]
+          "scale": [
+            0.5,
+            0.5
+          ],
+          "size": [
+            32,
+            32
+          ]
         },
         {
           "type": "CircleCollide2D",
@@ -46,7 +55,10 @@
       "tag": "enemy",
       "active": true,
       "m_transform": {
-        "position": [ 690.0, 512.0 ],
+        "position": [
+          690.0,
+          512.0
+        ],
         "rotation": 0.0,
         "scale": 5.0
       },
@@ -65,7 +77,10 @@
           "gravityScale": 0,
           "constrainAngle": true,
           "shape": "box",
-          "scale": [ 0.5, 0.5 ]
+          "scale": [
+            0.5,
+            0.5
+          ]
         },
         {
           "type": "CircleCollide2D",
@@ -73,15 +88,5 @@
         }
       ]
     }
-
-   
-
   ]
-
-
-
-
-
-
-
 }

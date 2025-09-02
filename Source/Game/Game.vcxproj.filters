@@ -97,7 +97,10 @@
     <None Include="..\..\Build\Assets\Platformer\Scenes\level.json">
       <Filter>Assets\Platformer</Filter>
     </None>
-    <None Include="..\..\Build\Assets\Platformer\Animations\ghost_idle.json">
+    <None Include="..\..\Build\Assets\Platformer\Tilemaps\tilemap.json">
+      <Filter>Assets\Platformer</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Platformer\Animations\ghost-idle.json">
       <Filter>Assets\Platformer</Filter>
     </None>
   </ItemGroup>

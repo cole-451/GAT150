@@ -3,7 +3,7 @@
     {
       "name": "background",
       "tag": "background",
-      "active": true,
+      "active": false,
       "persistent": true,
       "m_transform": {
         "position": [ 500.0, 400.0 ],
@@ -19,11 +19,28 @@
 
       ]
     },
+    {
+      "persistent": true,
+      "m_transform": {
+        "position": [ 0.0, 0.0 ],
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TilemapRenderer",
+          "tilemap_name": "Tilemaps/tilemap.json"
+        }
+
+
+      ]
+    },
 
     {
       "name": "tree",
       "tag": "tree",
       "persistent": true,
+      "active": false,
       "m_transform": {
         "position": [
           460,

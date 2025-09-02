@@ -1,6 +1,7 @@
 #pragma once
 #include <rapidjson/document.h>
 #include <string>
+#include <vector>
 #include "Math/Vector2.h"
 #include "Math/Vector3.h"
 
@@ -27,6 +28,9 @@ namespace parabellum::json {
 	bool Read(const value_t& value, const std::string& name, vec2& data, bool required = false);
 
 	bool Read(const value_t& value, const std::string& name, vec3& data, bool required = false);
+
+	bool Read(const value_t& value, const std::string& name, std::vector<int>& data, bool required = false);
+
 
 	
 

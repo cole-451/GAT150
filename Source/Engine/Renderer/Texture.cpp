@@ -39,7 +39,7 @@ bool Texture::Load(const std::string& filename, Renderer& renderer)
 {
     
       float w, h;
-      SDL_GetTextureSize(m_texture, &w, &h);
+      SDL_GetTextureSize(m_texture, &w, &h); //still throws an exception here.
       return vec2{ w, h };
 }
 

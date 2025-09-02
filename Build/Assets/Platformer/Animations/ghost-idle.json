@@ -1,5 +1,5 @@
 {
-  "texture_name": "textures/ghost_idle.png",
+  "texture_name": "Textures/ghost-idle.png",
   "columns": 7,
   "rows": 1,
   "start_frame": 0,

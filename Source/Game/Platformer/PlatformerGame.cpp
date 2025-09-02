@@ -7,8 +7,8 @@ namespace parabellum {
 		OBSERVER_ADD("add_points");
 		m_scene = std::make_unique<Scene>(this);
 
-		m_scene->Load("Scenes/prototypes.json");
 		m_scene->Load("Scenes/level.json");
+		m_scene->Load("Scenes/prototypes.json");
 
 		return true;
 	}
@@ -57,14 +57,14 @@ namespace parabellum {
 	}
 
 	void PlatformerGame::spawnPlayer() {
-		auto player = Instantiate("player");
-		if (player) {
+		auto player = Instantiate("platformplayer");
+		//if (player) {
 		m_scene->AddActor(std::move(player));
 
-		}
-		else {
-			Logger::Error("Cannot spawn player!");
-		}
+		//}
+		//else {
+			//Logger::Error("Cannot spawn player!");
+		//}
 	}
 
 	void PlatformerGame::spawnEnemy() {

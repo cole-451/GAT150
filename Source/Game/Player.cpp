@@ -63,46 +63,7 @@ void Player::Update(float dt)
 
 		//owner->m_scene->GetActorByName("bullet")->Update(dt); // absolute guess on how to get this working.
 	}
-	/*
-		getEngine().getAudioSys().playSound("shoot");
-
-		getEngine().getAudioSys().playSound(*Resources().Get<AudioClip>(("bass.wav"), getEngine().getAudioSys()).get());
-
-
-		//auto model = Resources().Get<Texture>("bullet.png", parabellum::getEngine().getRenderer());
-
-		//TODO: replace textures with calls to add resources
-
-		auto bullet = std::make_unique<Actor>(tf);
-		bullet->name = "Bullet";
-		bullet->tag = "player";
-		bullet->speed = 9999999;
-		bullet->lifespan = 2.0f;
-
-		//components
-		auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
-		spriteRenderer->textureName = "bullet.png";
-		std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
-		bullet->addComponent(std::move(rb));
-
-		bullet->addComponent(std::move(spriteRenderer));
-		auto collider = std::make_unique<CircleCollide2D>();
-		collider->radius = 60;
-		bullet->addComponent(std::move(collider));
-		owner->m_scene->AddActor(std::move(bullet));
-
-
-
-
-
-	}
-
-	//ADDITIONAL: later, we can make some homing rockets or a ray that can make enemies join us
-	owner->m_transform.position.x = parabellum::math::Wrap(owner->m_transform.position.x, 0.0f, 1280.0f);
-	owner->m_transform.position.y = parabellum::math::Wrap(owner->m_transform.position.y, 0.0f, 1024.0f);
-
-	owner->Update(dt);
-	*/
+	
 }
 
 void Player::OnCollision(parabellum::Actor* other)

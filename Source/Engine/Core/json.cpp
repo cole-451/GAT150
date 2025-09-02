@@ -9,7 +9,7 @@ namespace parabellum {
 	bool json::Load(const std::string& filename, document_t& document)
 	{
 		// read the file into a string
-		std::string buffer;
+		std::string buffer; // can it not read because buffer isnt set to anything???
 		if (!File::ReadTextFile(filename, buffer)) {
 			Logger::Error("Could not read file: {}.", filename);
 			return false;
@@ -33,7 +33,7 @@ namespace parabellum {
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber()) {
 			if (required) {
-			Logger::Error("Could not read Json value (int): {}.", name);
+				Logger::Error("Could not read Json value (int): {}.", name);
 			}
 			return false;
 		}
@@ -49,7 +49,7 @@ namespace parabellum {
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber()) {
 			if (required) {
-			Logger::Error("Could not read Json value (float): {}.", name);
+				Logger::Error("Could not read Json value (float): {}.", name);
 
 			}
 			return false;
@@ -65,7 +65,7 @@ namespace parabellum {
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsBool()) {
 			if (required) {
-			Logger::Error("Could not read Json value (bool): {}.", name);
+				Logger::Error("Could not read Json value (bool): {}.", name);
 			}
 			return false;
 		}
@@ -80,7 +80,7 @@ namespace parabellum {
 		// check if the value has the "<name>" and the correct data type
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsString()) {
 			if (required) {
-			Logger::Error("Could not read Json value (string): {}.", name);
+				Logger::Error("Could not read Json value (string): {}.", name);
 
 			}
 			return false;
@@ -96,7 +96,7 @@ namespace parabellum {
 		// check if the value has the "<name>" and is an array with 2 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2) {
 			if (required) {
-			Logger::Error("Could not read Json value (vec2): {}.", name);
+				Logger::Error("Could not read Json value (vec2): {}.", name);
 
 			}
 			return false;
@@ -122,7 +122,7 @@ namespace parabellum {
 		// check if the value has the "<name>" and is an array with 2 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 3) {
 			if (required) {
-			Logger::Error("Could not read Json value (vec3): {}.", name);
+				Logger::Error("Could not read Json value (vec3): {}.", name);
 
 			}
 			return false;
@@ -139,6 +139,34 @@ namespace parabellum {
 
 			// get the data
 			data[i] = array[i].GetFloat();
+		}
+
+		return true;
+	}
+
+	bool json::Read(const value_t& value, const std::string& name, std::vector<int>& data, bool required)
+	{
+		// check if the value has the "<name>" and is an array with 2 elements
+		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()) {
+			if (required) {
+				Logger::Error("Could not read Json value (vector<int>): {}.", name);
+
+			}
+			return false;
+		}
+
+		// get json array object
+		auto& array = value[name.c_str()];
+		// get array values
+		for (rapidjson::SizeType i = 0; i < array.Size(); i++) {
+			if (!array[i].IsNumber()) {
+				Logger::Error("Could not read Json value: {}.", name);
+				return false;
+			}
+
+			// get the data
+			data.push_back(array[i].GetInt());
+			//data[i] = array[i].GetFloat();
 		}
 
 		return true;
