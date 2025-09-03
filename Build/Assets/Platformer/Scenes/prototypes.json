@@ -51,13 +51,13 @@
       ]
     },
     {
-      "name": "enemy",
+      "name": "platformenemy",
       "tag": "enemy",
       "active": true,
       "m_transform": {
         "position": [
-          645.0,
-          312.0
+          670.0,
+          -300.0
         ],
         "rotation": 0.0,
         "scale": 5.0
