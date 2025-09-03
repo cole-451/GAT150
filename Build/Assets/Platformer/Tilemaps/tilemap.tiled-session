@@ -3,16 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "tilemap.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "tilemap..json": {
-            "scale": 1.2686458333333333,
+            "scale": 0.5884,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 479.64529107480087,
-                "y": 319.6321537072009
+                "x": 547.2467709041468,
+                "y": 155.50645819170632
             }
         },
         "tilemap.tmx": {
@@ -22,6 +23,10 @@
                 "x": 240,
                 "y": 221.66666666666669
             }
+        },
+        "tilemap.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
         }
     },
     "last.exportedFilePath": "C:/Important Work/C++ Projects/GAT150/Build/Assets/Platformer/Tilemaps",
@@ -29,9 +34,15 @@
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "tilemap.tsx",
+        "tilemap.tmx",
+        "tilemap..json"
     ],
     "project": "tilemap.tiled-project",
     "recentFiles": [
+        "tilemap.tsx",
+        "tilemap..json",
+        "tilemap.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

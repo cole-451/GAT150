@@ -22,11 +22,11 @@ namespace parabellum {
 	{
 		if (texture) {
 			if (textureRect.w > 0 && textureRect.h > 0) {
-				renderer.DrawTexture(*texture, textureRect, owner->m_transform.position.x, owner->m_transform.position.y, owner->m_transform.rotation, owner->m_transform.scale);
+				renderer.DrawTexture(*texture, textureRect, owner->m_transform.position.x, owner->m_transform.position.y, owner->m_transform.rotation, owner->m_transform.scale, flipH);
 
 			}
 			else {
-				renderer.DrawTexture(*texture, owner->m_transform.position.x, owner->m_transform.position.y, owner->m_transform.rotation, owner->m_transform.scale);
+				renderer.DrawTexture(*texture, owner->m_transform.position.x, owner->m_transform.position.y, owner->m_transform.rotation, owner->m_transform.scale, flipH);
 
 			}
 
@@ -38,5 +38,6 @@ namespace parabellum {
 		Object::Read(value);
 		Component::Read(value);
 		JSON_READ(value, textureName);
+		JSON_READ(value, flipH);
 	}
 }

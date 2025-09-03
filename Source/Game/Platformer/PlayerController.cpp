@@ -17,16 +17,25 @@ void PlayerController::Update(float dt)
 	float thrust = 0;
 
 	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_A)) thrust = -1;
+
 	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_D)) thrust = 1;
+
 	vec2 direction{ 1,0 };
 	//vec2 force = direction.Rotate(math::degrees_to_radius(owner->m_transform.rotation)) * thrust * speed;
 
 	if (thrust != 0) {
-		m_rb->ApplyForce(vec2{ 1,0 } * thrust * 10000);
+		m_rb->ApplyForce(vec2{ 1,0 } * thrust * 1000);
 	}
 	if (getEngine().getInputSys().getKeyPressed(SDL_SCANCODE_SPACE)) {
-		m_rb->ApplyForce(vec2{ 0,-1 } * 1000000);
+		m_rb->ApplyForce(vec2{ 0,-1 } * 100000);
 
+	}
+	auto spriterenderer = owner->getComponent<SpriteRenderer>();
+	if (spriterenderer && thrust > 0) {
+		spriterenderer->flipH = true;
+	}
+	else if (spriterenderer && thrust < 0) {
+		spriterenderer->flipH = false;
 	}
 
 	// something wrong here, perhaps?
@@ -39,6 +48,7 @@ void PlayerController::Update(float dt)
 
 void PlayerController::OnCollision(parabellum::Actor* other)
 {
+	Logger::Debug("bro is touching: ", other->name);
 
 }
 

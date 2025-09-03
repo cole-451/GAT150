@@ -11,6 +11,7 @@ namespace parabellum {
 		//owner->m_transform.position += velocity * dt;
 		owner->m_transform.position = m_physbod->getPosition();
 		owner->m_transform.rotation = math::radius_to_degrees(m_physbod->getAngle());
+		//velocity = m_physbod->getVelocity();
 }
 
 	RigidBody::RigidBody(const RigidBody& other)
@@ -74,6 +75,12 @@ namespace parabellum {
 
 	void RigidBody::setVelocity(const vec2& velocity) {
 		m_physbod->setVelocity(velocity);
+	}
+	vec2 RigidBody::getVelocity()
+	{
+		return vec2{};
+		//return Physics::WorldToPixel(to_vec2(b2Body_GetLinearVelocity(m_physbod)));
+		//you see i WOULD put this in but my turning works already
 	}
 }
 

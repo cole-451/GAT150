@@ -28,6 +28,8 @@ namespace parabellum {
 
 		void setVelocity(const vec2& velocity);
 
+		vec2 getVelocity();
+
 	private:
 		std::unique_ptr<PhysicsBody> m_physbod;
 

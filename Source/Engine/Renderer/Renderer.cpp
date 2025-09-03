@@ -98,7 +98,7 @@ namespace parabellum {
         // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
         SDL_RenderTexture(renderer, texture.m_texture, NULL, &destRect);
     }
-    void Renderer::DrawTexture(Texture& texture, float x, float y, float angle, float scale)
+    void Renderer::DrawTexture(Texture& texture, float x, float y, float angle, float scale, bool flip_h)
     {
         vec2 size = texture.GetSize();
 
@@ -109,10 +109,10 @@ namespace parabellum {
         destRect.y = y - (destRect.h * 0.5f);
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
-        SDL_RenderTextureRotated(renderer, texture.m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
+        SDL_RenderTextureRotated(renderer, texture.m_texture, NULL, &destRect, angle, NULL, (flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
     }
     //for animated sprites
-    void Renderer::DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale)
+    void Renderer::DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale, bool flip_h)
     {
         // convert rect to SDL_FRect
         SDL_FRect srcRect;
@@ -125,6 +125,6 @@ namespace parabellum {
         destRect.h = srcRect.h * scale;
         destRect.x = x - destRect.w * 0.5f;
         destRect.y = y - destRect.h * 0.5f;
-        SDL_RenderTextureRotated(renderer, texture.m_texture, &srcRect, &destRect, angle, NULL, SDL_FLIP_NONE);
+        SDL_RenderTextureRotated(renderer, texture.m_texture, &srcRect, &destRect, angle, NULL, (flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
     }
 }

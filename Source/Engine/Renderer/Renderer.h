@@ -37,9 +37,9 @@ namespace parabellum {
 
 		friend class Texture;
 		void DrawTexture(Texture& texture, float x, float y);
-		void DrawTexture(Texture& texture, float x, float y, float angle, float scale = 1);
+		void DrawTexture(Texture& texture, float x, float y, float angle, float scale = 1, bool flip_h = false);
 
-		void DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale = 1.0f);
+		void DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale = 1.0f, bool flip_h = false);
 
 
 

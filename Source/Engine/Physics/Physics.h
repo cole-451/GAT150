@@ -29,5 +29,8 @@ namespace parabellum {
 		friend class PhysicsBody;
 		b2WorldId m_worldID;
 
+	private:
+		void ProcessCollisionEvents();
+
 	};
 }

@@ -16,6 +16,8 @@ namespace parabellum {
 
 		void draw(Renderer& renderer) override;
 
+		bool flipH{ false };
+
 	public:
 		std::string textureName;
 		res_t<Texture> texture;

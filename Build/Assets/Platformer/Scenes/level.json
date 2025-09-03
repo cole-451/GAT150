@@ -3,7 +3,7 @@
     {
       "name": "background",
       "tag": "background",
-      "active": false,
+      "active": true,
       "persistent": true,
       "m_transform": {
         "position": [ 500.0, 400.0 ],
@@ -22,7 +22,7 @@
     {
       "persistent": true,
       "m_transform": {
-        "position": [ 0.0, 0.0 ],
+        "position": [ 200.0, 300.0 ],
         "rotation": 0.0,
         "scale": 1.0
       },
@@ -59,6 +59,7 @@
     {
       "name": "floor",
       "tag": "ground",
+      "active": true,
       "persistent": true,
       "m_transform": {
         "position": [

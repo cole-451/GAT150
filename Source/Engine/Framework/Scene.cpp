@@ -28,24 +28,24 @@ namespace parabellum {
 			}
 		}
 		//collision
-		for (auto& actorA : actors) {
-			for (auto& actorB : actors) {
-				continue; //NO MORE COLLISIONS FOR A MINUTE.
-				if (actorA == actorB || (!actorA->stillAlive || !actorB->stillAlive)) continue;
-				//if one is destroyed, dont do anything
-				auto colliderA = actorA->getComponent<ColliderComponent>();
-				auto colliderB = actorB->getComponent<ColliderComponent>();
+		//for (auto& actorA : actors) {
+		//	for (auto& actorB : actors) {
+		//		continue; //NO MORE COLLISIONS FOR A MINUTE.
+		//		if (actorA == actorB || (!actorA->stillAlive || !actorB->stillAlive)) continue;
+		//		//if one is destroyed, dont do anything
+		//		auto colliderA = actorA->getComponent<ColliderComponent>();
+		//		auto colliderB = actorB->getComponent<ColliderComponent>();
 
-				// make sure both actors have colliders
-				if (!colliderA || !colliderB) continue;
+		//		// make sure both actors have colliders
+		//		if (!colliderA || !colliderB) continue;
 
-				if (colliderA->checkCollision(*colliderB)) {
-					actorA->OnCollision(actorB.get());
-					actorB->OnCollision(actorA.get());
+		//		if (colliderA->checkCollision(*colliderB)) {
+		//			actorA->OnCollision(actorB.get());
+		//			actorB->OnCollision(actorA.get());
 
-				}
-			}
-		}
+		//		}
+		//	}
+		//}
 	}
 
 	void Scene::Draw(class Renderer& renderer) {

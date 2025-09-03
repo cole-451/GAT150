@@ -60,6 +60,8 @@ namespace parabellum::math {
 		using std::cosf;
 		using std::atan2;
 		using std::atan2f;
+		using std::abs;
+		using std::fabs;
 
 		//using std::clamp;
 	
