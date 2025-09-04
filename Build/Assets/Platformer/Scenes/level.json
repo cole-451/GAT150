@@ -58,31 +58,7 @@
         }
       ]
     },
-    {
-      "name": "floor",
-      "tag": "ground",
-      "active": true,
-      "persistent": true,
-      "m_transform": {
-        "position": [
-          600,
-          700
-        ],
-        "rotation": 0,
-        "scale": 0.2
-      },
-      "components": [
-        {
-          "type": "SpriteRenderer",
-          "textureName": "Textures/platform.png"
-        },
-        {
-          "type": "RigidBody",
-          "isDynamic": false,
-          "scale": [ 0.8, 0.8 ]
-        }
-      ]
-    },
+    
     {
       "name": "crate",
       "tag": "crate",

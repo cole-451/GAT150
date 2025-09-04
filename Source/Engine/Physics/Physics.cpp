@@ -28,6 +28,8 @@ namespace parabellum {
 		for (int i = 0; i < contactEvents.beginCount; i++) {
 			b2ContactBeginTouchEvent* contactevent = contactEvents.beginEvents + i;
 
+			if (!b2Shape_IsValid(contactevent->shapeIdA) || !b2Shape_IsValid(contactevent->shapeIdB)) continue;
+
 			b2BodyId bodyA = b2Shape_GetBody(contactevent->shapeIdA);
 			b2BodyId bodyB = b2Shape_GetBody(contactevent->shapeIdB);
 
@@ -44,6 +46,8 @@ namespace parabellum {
 		for (int i = 0; i < contactEvents.endCount; i++) {
 			b2ContactEndTouchEvent* contactevent = contactEvents.endEvents + i;
 
+			if (!b2Shape_IsValid(contactevent->shapeIdA) || !b2Shape_IsValid(contactevent->shapeIdB)) continue;
+
 			b2BodyId bodyA = b2Shape_GetBody(contactevent->shapeIdA);
 			b2BodyId bodyB = b2Shape_GetBody(contactevent->shapeIdB);
 
@@ -59,8 +63,10 @@ namespace parabellum {
 		//register contact with sensors
 		b2SensorEvents sensorevents = b2World_GetSensorEvents(m_worldID);
 
+
 		for (int i = 0; i < sensorevents.beginCount; i++) {
 			b2SensorBeginTouchEvent* sensorevent = sensorevents.beginEvents + i;
+		if (!b2Shape_IsValid(sensorevent->sensorShapeId) || !b2Shape_IsValid(sensorevent->visitorShapeId)) continue;
 
 			b2BodyId bodyA = b2Shape_GetBody(sensorevent->sensorShapeId);
 			b2BodyId bodyB = b2Shape_GetBody(sensorevent->visitorShapeId);

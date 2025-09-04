@@ -30,9 +30,9 @@ int main(int argc, char* argv[]) {
     
     //initialize sounds
 
-   /* getEngine().getAudioSys().addSound("bass.wav", "bass");
-    getEngine().getAudioSys().addSound("music.mp3", "music");
-    getEngine().getAudioSys().addSound("Boom8.wav", "shoot");*/
+    getEngine().getAudioSys().addSound("bass.wav", "bass");
+    getEngine().getAudioSys().addSound("Sounds/music.mp3", "music");
+    getEngine().getAudioSys().addSound("Boom8.wav", "shoot");
 
 
     std::unique_ptr<PlatformerGame> game = std::make_unique<PlatformerGame>();
