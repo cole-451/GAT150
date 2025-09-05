@@ -37,8 +37,6 @@ namespace parabellum {
 		void spawnEnemy();
 		// Inherited via Game
 
-		void spawnCrate();
-
 
 
 		std::unique_ptr<parabellum::Scene> m_scene;

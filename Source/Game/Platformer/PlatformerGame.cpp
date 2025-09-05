@@ -22,9 +22,6 @@ namespace parabellum {
 	}
 
 	void PlatformerGame::Update() {
-		/*float dt = getEngine().getTime().getDeltaTime();
-
-		m_scene->Update(dt);*/
 		switch (current_state)
 		{
 		case parabellum::PlatformerGame::GameState::Initialize:
@@ -109,9 +106,5 @@ namespace parabellum {
 		auto enemy = Instantiate("platformenemy");
 		m_scene->AddActor(std::move(enemy));
 	}
-	void PlatformerGame::spawnCrate()
-	{
-		auto crate = Instantiate("crate");
-		m_scene->AddActor(std::move(crate));
-	}
+	
 }

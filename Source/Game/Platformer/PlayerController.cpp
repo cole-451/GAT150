@@ -21,7 +21,6 @@ void PlayerController::Update(float dt)
 	if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_D)) thrust = 1;
 
 	vec2 direction{ 1,0 };
-	//vec2 force = direction.Rotate(math::degrees_to_radius(owner->m_transform.rotation)) * thrust * speed;
 
 	if (thrust != 0) {
 		m_rb->ApplyForce(vec2{ 1,0 } * thrust * 1000);
@@ -38,17 +37,12 @@ void PlayerController::Update(float dt)
 		spriterenderer->flipH = false;
 	}
 
-	// something wrong here, perhaps?
-	//velocity += force * dt;
-	//auto rb = owner->getComponent<parabellum::RigidBody>();
-
-	//m_rb->setVelocity(force);
 
 }
 
 void PlayerController::OnCollision(parabellum::Actor* other)
 {
-	Logger::Debug("bro is touching: ", other->name);
+	//Logger::Debug("bro is touching: ", other->name);
 
 }
 

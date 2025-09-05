@@ -26,6 +26,7 @@ private:
 
 	// Inherited via Actor
 	void OnCollision(class parabellum::Actor* other) override;
+	void OnOutOfBounds();
 
 	void Read(const json::value_t& value) override;
 

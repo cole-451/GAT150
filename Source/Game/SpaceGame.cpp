@@ -137,63 +137,13 @@ void parabellum::SpaceGame::spawnEnemy() // use Instantiate here later
 		auto enemy = Instantiate("enemy", transform);
 		m_scene->AddActor(std::move(enemy));
 	}
-	/*
-
-		//auto model = Resources().Get<Texture>("spr_enemy_default.png", getEngine().getRenderer());
-		std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform);
-		enemy->name = "enemy";
-		enemy->tag = "enemy";
-		enemy->speed = 350;
-
-	   // auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
-		//spriteRenderer->textureName = "spr_enemy_default.png";
-
-		std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
-		enemy->addComponent(std::move(rb));
-
-		auto collider = std::make_unique<CircleCollide2D>();
-		collider->radius = 60;
-		enemy->addComponent(std::move(collider));
-
-		//enemy->addComponent(std::move(spriteRenderer));
-		auto mesh = std::make_unique<MeshRenderer>();
-		mesh->meshName = "Meshes/enemy.txt";
-		enemy->addComponent(std::move(mesh));
-		m_scene->AddActor(std::move(enemy));
-	}
-
-
-	*/
+	
 }
 void::parabellum::SpaceGame::spawnPlayer() { // use Instantiate here later
 
 	auto player = Instantiate("player");
 
 	m_scene->AddActor(std::move(player));
-	/*
-	player->name = "Player";
-	player->tag = "player";
-	player->speed = 500;
-	player->rotationRate = 2000;
-
-	//components
-	auto spriteRenderer = std::make_unique<parabellum::SpriteRenderer>();
-	spriteRenderer->textureName = "spr_enemy_default.png";
-
-
-	auto collider = std::make_unique<CircleCollide2D>();
-	collider->radius = 60;
-	player->addComponent(std::move(collider));
-
-	std::unique_ptr<parabellum::RigidBody> rb = std::make_unique<parabellum::RigidBody>();
-	player->addComponent(std::move(rb));
-
-	player->addComponent(std::move(spriteRenderer)); // you need to transfer ownership, therefore, be sure to std::move!
-
-
-
-
-	m_scene->AddActor(std::move(player));
-	*/
+	
 
 }

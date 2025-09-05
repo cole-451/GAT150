@@ -8,7 +8,7 @@ namespace parabellum {
 
 void EnemyController::Start()
 {
-	m_rb = owner->getComponent<RigidBody>(); //returns a null object. fix por favor
+	m_rb = owner->getComponent<RigidBody>(); 
 
 
 }
@@ -29,6 +29,15 @@ void EnemyController::Update(float dt)
 
 void EnemyController::OnCollision(parabellum::Actor* other)
 {
+}
+
+void EnemyController::OnOutOfBounds()
+{
+	if (owner->m_transform.position.y > 800) {
+		owner->Destroyed();
+		owner->stillAlive = false;
+		//add points to HUD
+	}
 }
 
 void EnemyController::Read(const json::value_t& value)
