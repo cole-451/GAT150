@@ -13,7 +13,7 @@ namespace parabellum {
 		m_scoreFont->Load("Fonts/Brianne_s_hand.ttf", 100);
 
 		titleText = std::make_unique<Text>(parabellum::ResourceManager::Instance().GetWithID<parabellum::Font>("Fonts/Brianne_s_hand.ttf", "start_font", 100.0f));
-		titleText->Create(getEngine().getRenderer(), "press k to start", vec3{ 1,1,1 });
+		titleText->Create(getEngine().getRenderer(), "press k to start!", vec3{ 1,1,1 });
 		scoreText = std::make_unique<Text>(m_scoreFont);
 		scoreText->Create(getEngine().getRenderer(), "" + std::to_string(m_score), vec3{ 0,1,0 });
 
@@ -55,8 +55,8 @@ namespace parabellum {
 
 			//add points for moving crates off of the map, as well as destroying them
 
-
-
+			
+			
 
 			
 
@@ -96,7 +96,11 @@ namespace parabellum {
 	}
 
 	void PlatformerGame::OnNotify(const Event& event) {
-		
+		if (event.id == "add_points") {
+			m_game->addPoints(100);
+			scoreText->Draw(getEngine().getRenderer(), 30, 30);
+
+		}
 	}
 
 	void PlatformerGame::onPlayerDead() {
