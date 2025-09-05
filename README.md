@@ -21,6 +21,12 @@ Press "r" to restart the game.
 
 
 ## Installation/Instructions
+- Go to the Build folder and download Game.exe. Everything should be packaged in.
+
+
+## Known Issues
+- There is no specific fail state for the time being. Kick boxes off the ledge to your heart's content!
+- Score is not currently given out.
 
 
 
