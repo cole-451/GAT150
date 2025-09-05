@@ -25,18 +25,23 @@ void EnemyController::Update(float dt)
 	if (dir != 0) {
 		m_rb->ApplyForce(vec2{ 1, 0 } *dir * 500);
 	}
+
+	OnOutOfBounds(); //check if you're out of bounds
 }
 
 void EnemyController::OnCollision(parabellum::Actor* other)
 {
 }
 
-void EnemyController::OnOutOfBounds()
+void EnemyController::OnOutOfBounds() // maybe make a bool?
 {
-	if (owner->m_transform.position.y > 800) {
+	if (owner->m_transform.position.y > 1000) {
 		owner->Destroyed();
 		owner->stillAlive = false;
 		//add points to HUD
+		getEngine().getAudioSys().playSound("crate_destroyed");
+		//return true;
+		
 	}
 }
 

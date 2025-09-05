@@ -4,7 +4,8 @@ namespace parabellum {
 	bool PlatformerGame::initialize() {
 		
 		OBSERVER_ADD("player_dead");
-		OBSERVER_ADD("add_points");
+		OBSERVER_ADD("add_points"); // these are events that this game is specifically looking for. use these with onNotify if needed.
+
 		m_scene = std::make_unique<Scene>(this);
 
 		m_scoreFont = std::make_shared<Font>();
@@ -29,7 +30,7 @@ namespace parabellum {
 			break;
 		case parabellum::PlatformerGame::GameState::Title:
 			if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_K)) {
-				getEngine().getAudioSys().playSound("music");
+				getEngine().getAudioSys().playSound("platformer_music");
 				current_state = GameState::StartGame;
 			}
 			break;
@@ -42,10 +43,11 @@ namespace parabellum {
 		case parabellum::PlatformerGame::GameState::ComeGetSome:
 			enemySpawnTimer -= getEngine().getTime().getDeltaTime();
 			if (enemySpawnTimer <= 0) {
-				enemySpawnTimer = 10.0f;
+				enemySpawnTimer = 7.0f;
 				spawnEnemy();
 			}
 			//add points for moving crates off of the map, as well as destroying them
+
 
 
 			//create lose state for when there are too many boxes, or if you haven't killed a box in a period of time.
