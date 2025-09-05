@@ -39,6 +39,7 @@ void EnemyController::OnOutOfBounds() // maybe make a bool?
 		owner->Destroyed();
 		owner->stillAlive = false;
 		//add points to HUD
+		EventManager::Instance().Notify(Event{ "add_points", 100 });
 		getEngine().getAudioSys().playSound("crate_destroyed");
 		//return true;
 		

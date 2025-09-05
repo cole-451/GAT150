@@ -33,7 +33,7 @@
             }
         },
         "tilemap.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
@@ -44,11 +44,13 @@
     "openFiles": [
         "tilemap.tsx",
         "tilemap.tmx",
-        "tilemap..json"
+        "tilemap..json",
+        "tilemap.json"
     ],
     "project": "tilemap.tiled-project",
     "recentFiles": [
         "tilemap.tsx",
+        "tilemap.json",
         "tilemap..json",
         "tilemap.tmx"
     ],
