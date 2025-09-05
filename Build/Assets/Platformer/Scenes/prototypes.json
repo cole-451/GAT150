@@ -74,7 +74,7 @@
         },
         {
           "type": "RigidBody",
-          "gravityScale": 1,
+          "gravityScale": 0.5,
           "constrainAngle": true,
           "shape": "capsule",
           "scale": [

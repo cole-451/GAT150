@@ -8,9 +8,9 @@ namespace parabellum {
 		m_scene = std::make_unique<Scene>(this);
 
 		m_scoreFont = std::make_shared<Font>();
-		m_scoreFont->Load("Fonts/Brianne_s_hand.ttf", 50);
+		m_scoreFont->Load("Fonts/Brianne_s_hand.ttf", 100);
 
-		titleText = std::make_unique<Text>(parabellum::ResourceManager::Instance().GetWithID<parabellum::Font>("Fonts/Brianne_s_hand.ttf", "start_font", 30.0f));
+		titleText = std::make_unique<Text>(parabellum::ResourceManager::Instance().GetWithID<parabellum::Font>("Fonts/Brianne_s_hand.ttf", "start_font", 100.0f));
 		titleText->Create(getEngine().getRenderer(), "press k to start", vec3{ 1,1,1 });
 		scoreText = std::make_unique<Text>(m_scoreFont);
 		scoreText->Create(getEngine().getRenderer(), "" + std::to_string(m_score), vec3{ 0,1,0 });
@@ -45,9 +45,13 @@ namespace parabellum {
 		case parabellum::PlatformerGame::GameState::ComeGetSome:
 			enemySpawnTimer -= getEngine().getTime().getDeltaTime();
 			if (enemySpawnTimer <= 0) {
-				enemySpawnTimer = 5.0f;
+				enemySpawnTimer = 10.0f;
 				spawnEnemy();
 			}
+			//add points for moving crates off of the map, as well as destroying them
+
+
+			//create lose state for when there are too many boxes, or if you haven't killed a box in a period of time.
 
 			
 			break;
@@ -69,12 +73,12 @@ namespace parabellum {
 	void PlatformerGame::Draw(class Renderer& renderer) {
 		m_scene->Draw(renderer);
 		if (current_state == GameState::Title) {
-			titleText->Draw(getEngine().getRenderer(), 25, 25);
+			titleText->Draw(getEngine().getRenderer(), 400, 400);
 
 		}
 
 		else if (current_state == GameState::HesRottingYouKnow) {
-			titleText->Draw(getEngine().getRenderer(), 0, 0);
+			titleText->Draw(getEngine().getRenderer(), 300, 400);
 
 		}
 		else if (current_state == GameState::ComeGetSome) {
@@ -83,7 +87,7 @@ namespace parabellum {
 	}
 
 	void PlatformerGame::OnNotify(const Event& event) {
-
+		
 	}
 
 	void PlatformerGame::onPlayerDead() {
