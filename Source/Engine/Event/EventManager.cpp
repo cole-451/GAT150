@@ -27,7 +27,7 @@ namespace parabellum {
 	void EventManager::Notify(const Event& event)
 	{ // find observers of event
 		auto it = m_observers.find(toLower(event.id));
-		if (it != m_observers.end()) {
+		if (it != m_observers.end()) { // things got screwed up here
 			auto& observers = it->second;
 			for (auto observer : observers) {
 				observer->OnNotify(event);

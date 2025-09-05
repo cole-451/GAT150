@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tilemap.tmx",
+    "activeFile": "tilemap.json",
     "expandedProjectPaths": [
         "."
     ],
@@ -21,7 +21,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 480.1232349165598,
-                "y": 319.9178433889603
+                "y": 289.8485237483954
             }
         },
         "tilemap.tmx": {
@@ -44,15 +44,14 @@
     "openFiles": [
         "tilemap.tsx",
         "tilemap.tmx",
-        "tilemap..json",
         "tilemap.json"
     ],
     "project": "tilemap.tiled-project",
     "recentFiles": [
         "tilemap.tsx",
+        "tilemap.tmx",
         "tilemap.json",
-        "tilemap..json",
-        "tilemap.tmx"
+        "tilemap..json"
     ],
     "tileset.lastUsedFormat": "tsx"
 }
