@@ -11,7 +11,6 @@ This uses the Parabellum Engine, a custom-made game engine that supports physics
 - Animated sprite system
 - Dynamic 2D physics for objects
 
-- 
 ## Controls
 Press "k" to start the game.
 WASD to move.
@@ -28,8 +27,8 @@ Press "r" to restart the game.
 
 ## Credits
 Parabellum Engine uses the following third-party software:
-[Box2D](https://box2d.org/)
-[SDL3](https://github.com/libsdl-org/SDL/releases)
-[FMOD](https://www.fmod.com/)
-[RapidJSON](https://github.com/Tencent/rapidjson/releases)
+- [Box2D](https://box2d.org/)
+- [SDL3](https://github.com/libsdl-org/SDL/releases)
+- [FMOD](https://www.fmod.com/)
+- [RapidJSON](https://github.com/Tencent/rapidjson/releases)
 
