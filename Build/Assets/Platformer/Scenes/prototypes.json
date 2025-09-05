@@ -60,7 +60,7 @@
           -300.0
         ],
         "rotation": 0.0,
-        "scale": 5.0
+        "scale": 1.0
       },
       "components": [
         {
@@ -70,7 +70,7 @@
         },
         {
           "type": "SpriteRenderer",
-          "textureName": "Textures/box.png"
+          "textureName": "Textures/crate02.png"
         },
         {
           "type": "RigidBody",

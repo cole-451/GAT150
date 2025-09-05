@@ -43,11 +43,11 @@ namespace parabellum {
 
 			break;
 		case parabellum::PlatformerGame::GameState::ComeGetSome:
-			/*enemySpawnTimer -= dt;
+			enemySpawnTimer -= getEngine().getTime().getDeltaTime();
 			if (enemySpawnTimer <= 0) {
 				enemySpawnTimer = 5.0f;
-				spawnCrate();
-			}*/
+				spawnEnemy();
+			}
 
 			
 			break;
