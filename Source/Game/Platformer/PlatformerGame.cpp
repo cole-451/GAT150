@@ -96,11 +96,14 @@ namespace parabellum {
 	}
 
 	void PlatformerGame::OnNotify(const Event& event) {
-		if (event.id == "add_points") {
-			m_game->addPoints(100);
+		if (equalsIgnoreCase(event.id, "add_points")) {
+			addPoints(std::get<int>(event.data));
 			scoreText->Draw(getEngine().getRenderer(), 30, 30);
 
 		}
+		
+
+		
 	}
 
 	void PlatformerGame::onPlayerDead() {
