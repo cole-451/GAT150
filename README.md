@@ -18,7 +18,8 @@ Space to jump.
 Press "r" to restart the game.
 
 ## Screenshots
-
+![alt-text](https://github.com/cole-451/GAT150/blob/master/Build/Assets/Platformer/screenshots/screenshot1.png)
+![alt-text](https://github.com/cole-451/GAT150/blob/master/Build/Assets/Platformer/screenshots/screenshot2.png)
 
 ## Installation/Instructions
 - Go to the Build folder and download Game.exe. Everything should be packaged in.
