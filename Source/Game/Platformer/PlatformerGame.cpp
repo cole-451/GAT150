@@ -5,6 +5,7 @@ namespace parabellum {
 		
 		OBSERVER_ADD("player_dead");
 		OBSERVER_ADD("add_points"); // these are events that this game is specifically looking for. use these with onNotify if needed.
+		OBSERVER_ADD("add_time");
 
 		m_scene = std::make_unique<Scene>(this);
 
@@ -46,15 +47,23 @@ namespace parabellum {
 				enemySpawnTimer = 7.0f;
 				spawnEnemy();
 			}
+			//Create a timer in the header for how long you have to live.
+			timeToBleed -= getEngine().getTime().getDeltaTime();
+			if (timeToBleed <= 0) {
+				//current_state = GameState::HesRottingYouKnow;
+			}
+
 			//add points for moving crates off of the map, as well as destroying them
 
 
 
-			//create lose state for when there are too many boxes, or if you haven't killed a box in a period of time.
+
+			
 
 			
 			break;
 		case parabellum::PlatformerGame::GameState::HesRottingYouKnow:
+			titleText->Create(getEngine().getRenderer(), "Game Over! Press R to restart.", vec3{ 1,0,0 });
 			if (parabellum::getEngine().getInputSys().getKeyDown(SDL_SCANCODE_R)) current_state = GameState::StartGame;
 			break;
 		case parabellum::PlatformerGame::GameState::YouFuckingSuck:
@@ -62,7 +71,8 @@ namespace parabellum {
 		default:
 			break;
 
-		}m_scene->Update(getEngine().getTime().getDeltaTime());
+		}
+		m_scene->Update(getEngine().getTime().getDeltaTime());
 	}
 
 	void PlatformerGame::GTFO() {

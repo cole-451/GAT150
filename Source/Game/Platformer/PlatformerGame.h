@@ -47,6 +47,8 @@ namespace parabellum {
 
 		float enemySpawnTimer = 0;
 
+		float timeToBleed = 30.0f;
+
 		std::shared_ptr<Font> m_titleFont;
 
 		std::shared_ptr<Font> m_scoreFont;
